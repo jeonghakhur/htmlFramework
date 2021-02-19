@@ -1,0 +1,6 @@
+{
+  "beautify.ignore": ["**/*.scss"],
+  "[scss]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  }
+}

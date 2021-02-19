@@ -1,0 +1,233 @@
+// Reboot
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// 1. 모든 브라우저에서 여백을 제거하십시오.
+// 2. iOS에서 방향 변경 후 글꼴 크기 조정을 방지합니다.
+// 3. iOS에서 기본 탭 강조 표시를 완전히 투명하게 변경합니다.
+body {
+  margin: 0; // 1
+  font-family: var(--font-sans-serif);
+  @include font-size(22px);
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: $gray-900;
+  text-align: $body-text-align;
+  background-color: $body-color;
+  -webkit-text-size-adjust: 100%; // 2
+  -webkit-tap-highlight-color: rgba($black, 0); // 3
+}
+
+// 미래 보장 규칙 : : focus-visible을 지원하는 브라우저에서 프로그래밍 방식으로 포커스를 받지만 
+// 일반적으로 포커스 아웃 라인을 표시하지 않는 요소의 포커스 아웃 라인을 억제합니다. 
+// 일반적으로 이는 프로그래밍 방식의 포커스를받는 요소로 이어진 상호 작용이 키보드 상호 작용이거나 브라우저가 사용자가 주로 키보드 사용자라고 판단하고 
+// 또는 포커스 아웃 라인이 항상 제시됩니다.
+// See https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
+// and https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: 0 !important;
+}
+
+// Typography
+//
+// 1. 머리글에서 위쪽 여백 제거 기본적으로`<h1>`-` <h6>`은 모두 위쪽 및 아래쪽 여백을받습니다. 
+
+%heading {
+  margin-top: 0; // 1
+  margin-bottom: 1rem;
+  font-family: $font-family-base;
+  font-weight: normal;
+  line-height: 1;
+  color: $gray-500;
+}
+
+h1 {
+  @extend %heading;
+  @include font-size(32px);
+}
+
+h2 {
+  @extend %heading;
+  @include font-size(28px);
+}
+
+h3 {
+  @extend %heading;
+  @include font-size(26px);
+}
+
+h4 {
+  @extend %heading;
+  @include font-size(22px);
+}
+
+h5 {
+  @extend %heading;
+  @include font-size(18px);
+}
+
+h6 {
+  @extend %heading;
+  @include font-size(14px);
+}
+
+// Reset margins on paragraphs
+//
+// `<p>`의 상단 여백이 재설정됩니다.'rem'단위를 사용하도록 하단 여백도 재설정했습니다.
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+// Abbreviations
+//
+// 1. Chrome, Edge, Opera 및 Safari에서 올바른 텍스트 장식을 추가하십시오.
+// 2. 변경된 동작을 나타내는 명시 적 커서를 추가합니다.
+// 3. 텍스트 장식을 건너 뛰지 않도록합니다.
+// 3. https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-skip-ink
+
+abbr[title] {
+  text-decoration: underline; // 1
+  text-decoration: underline dotted; // 1
+  cursor: help; // 3
+  text-decoration-skip-ink: none; // 4
+}
+
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
+}
+
+// Lists
+
+ol,
+ul {
+  padding-left: 2rem;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: $font-weight-bold;
+}
+
+// 1. Undo browser default
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0; // 1
+}
+
+
+// Blockquote
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+
+// Strong
+//
+// Add the correct font weight in Chrome, Edge, and Safari
+
+b,
+strong {
+  font-weight: $font-weight-bolder;
+}
+
+
+// Small
+//
+// Add the correct font size in all browsers
+
+small {
+  font-size: $font-size-sm;
+}
+
+
+// Mark
+
+mark {
+  padding: 0.2em;
+  background-color: #fcf8e3;
+}
+
+
+// Sub and Sup
+//
+// Prevent `sub` and `sup` elements from affecting the line height in
+// all browsers.
+
+sub,
+sup {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub { bottom: -.25em; }
+sup { top: -.5em; }
+
+// Links
+
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+// Code
+
+pre,
+code,
+kbd,
+samp {
+  font-family: var(--font-monospace);
+  font-size: 1em;
+}
+
+code {
+  font-size: $font-size-sm;
+  color: $pink;
+  word-wrap: break-word;
+}
+
+// 1. 레거시 Edge에서 자동 숨김 스크롤바를 비활성화하여 콘텐츠와 상호 작용할 수 없도록 겹침 방지
+
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+  font-size: $font-size-sm;
+  -ms-overflow-style: scrollbar; // 1
+
+  code {
+    @include font-size(inherit);
+    color: inherit;
+    word-break: normal;
+  }
+}

@@ -1,0 +1,44 @@
+// Bootstrap functions
+//
+// 변수, 맵 및 믹스 인에서 소스 코드를 평가하기위한 유틸리티 믹스 인 및 함수입니다.
+
+// Ascending
+// 그리드 중단 점과 같은 Sass 맵을 평가하는 데 사용됩니다.
+@mixin _assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num == null or unit($num) == '%' or unit($prev-num) == '%' {
+      // Do nothing
+    } @else if not comparable($prev-num, $num) {
+      @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    } @else if $prev-num >= $num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    $prev-key: $key;
+    $prev-num: $num;
+  }
+}
+
+// Starts at zero
+// 가장 낮은 중단 점의 최소 너비가 0에서 시작하도록하는 데 사용됩니다.
+@mixin _assert-starts-at-zero($map, $map-name: '$grid-breakpoints') {
+  @if length($map) > 0 {
+    $values: map-values($map);
+    $first-value: nth($values, 1);
+    @if $first-value != 0 {
+      @warn 'First breakpoint in #{$map-name} must start at 0, but starts at #{$first-value}.';
+    }
+  }
+}
+
+// 키 앞에 'n'을 붙이고 값을 음수로 만듭니다.
+@function negativify-map($map) {
+  $result: ();
+  @each $key, $value in $map {
+    @if $key != 0 {
+      $result: map-merge($result, ('n' + $key: (-$value)));
+    }
+  }
+  @return $result;
+}
