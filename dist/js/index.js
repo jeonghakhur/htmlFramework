@@ -2625,12 +2625,13 @@
 
   var Tooltip = function Tooltip() {
     this._popper = new Popper(document.querySelector('body'), document.querySelector('button'), {
-      placement: top
+      placement: 'top'
     });
     console.log(this._poper);
   };
 
-  new Tooltip();
+  var tooltip = new Tooltip();
+  console.log(tooltip);
 
   // import Alert from './src/alert'
   var index_umd = {

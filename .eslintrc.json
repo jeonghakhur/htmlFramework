@@ -43,6 +43,8 @@
     "unicorn/prefer-spread": "off",
     "unicorn/prefer-dom-node-remove": "off",
     "unicorn/no-array-for-each": "off",
-    "unicorn/prefer-math-trunc": "off"
+    "unicorn/prefer-math-trunc": "off",
+    "unicorn/consistent-destructuring": "off",
+    "unicorn/prefer-optional-catch-binding": "off"
   }
 }
