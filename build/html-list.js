@@ -24,11 +24,11 @@ const getAllFiles = (dirPath, arrayOfFiles) => {
 const readFile = file => {
   return new Promise(resolve => {
     fs.readFile(file, 'utf-8', (err, data) => {
-      console.log(file)
       // eslint-disable-next-line curly
       if (err) throw err
       const obj = {}
-      obj.path = file
+      console.log(htmlDir)
+      obj.path = file.replace(htmlDir, '')
       const tempMatch = data.match(/-\w+:\s.*/g)
       if (tempMatch) {
         tempMatch.forEach(str => {

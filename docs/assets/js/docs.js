@@ -28,4 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   clipboard.on('success', e => {
     e.clearSelection()
   })
+
+  console.log(axios)
 })
