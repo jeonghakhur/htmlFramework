@@ -42,14 +42,15 @@
 
       var template = ''
       var index = 0
+      var sortData = _.sortBy(data, ['weight', 'name'])
 
-      data.forEach(function (value) {
+      sortData.forEach(function (value) {
         if (!value.name) return
         index += 1
         template += `<tr>
           <td>${index}</td>
-          <td>${value.name}</td>
-          <td>${value.path}</td>
+          <td><a href="../html/${value.path}">${value.name}</a></td>
+          <td>html${value.path}</td>
         </tr>`
       })
       console.log(template)

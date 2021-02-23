@@ -13,7 +13,9 @@
     "css-prefix": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\"",
     "js-compile": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
     "js-lint": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives .",
+    "html-list": "node build/html-list",
     "watch": "npm-run-all --parallel watch-*",
+    "watch-html": "nodemon --watch html/ --ext html --exec \"npm-run-all html-list\"",
     "watch-js": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
     "watch-css": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-lint css-compile css-prefix\""
   },
