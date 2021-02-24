@@ -13,7 +13,7 @@ import {
   getTransitionDurationFromElement,
   isVisible,
   reflow,
-  typeCheckConfig
+  typeCheckConfig,
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
@@ -37,14 +37,14 @@ const Default = {
   backdrop: true,
   keyboard: true,
   focus: true,
-  show: true
+  show: true,
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   focus: 'boolean',
-  show: 'boolean'
+  show: 'boolean',
 }
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -71,7 +71,8 @@ const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
 const SELECTOR_DATA_TOGGLE = '[data-toggle="modal"]'
 const SELECTOR_DATA_DISMISS = '[data-dismiss="modal"]'
-const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
+const SELECTOR_FIXED_CONTENT =
+  '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
 /**
@@ -120,7 +121,7 @@ class Modal {
     }
 
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
-      relatedTarget
+      relatedTarget,
     })
 
     if (this._isShown || showEvent.defaultPrevented) {
@@ -137,7 +138,8 @@ class Modal {
     this._setEscapeEvent()
     this._setResizeEvent()
 
-    EventHandler.on(this._element,
+    EventHandler.on(
+      this._element,
       EVENT_CLICK_DISMISS,
       SELECTOR_DATA_DISMISS,
       event => this.hide(event)
@@ -189,7 +191,9 @@ class Modal {
     if (transition) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, TRANSITION_END, event => this._hideModal(event))
+      EventHandler.one(this._element, TRANSITION_END, event =>
+        this._hideModal(event)
+      )
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       this._hideModal()
@@ -197,8 +201,9 @@ class Modal {
   }
 
   dispose() {
-    [window, this._element, this._dialog]
-      .forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
+    ;[window, this._element, this._dialog].forEach(htmlElement =>
+      EventHandler.off(htmlElement, EVENT_KEY)
+    )
 
     /**
      * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
@@ -229,7 +234,7 @@ class Modal {
   _getConfig(config) {
     config = {
       ...Default,
-      ...config
+      ...config,
     }
     typeCheckConfig(NAME, config, DefaultType)
     return config
@@ -239,8 +244,10 @@ class Modal {
     const transition = this._element.classList.contains(CLASS_NAME_FADE)
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog)
 
-    if (!this._element.parentNode ||
-        this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
+    if (
+      !this._element.parentNode ||
+      this._element.parentNode.nodeType !== Node.ELEMENT_NODE
+    ) {
       // Don't move modal's DOM position
       document.body.appendChild(this._element)
     }
@@ -272,7 +279,7 @@ class Modal {
 
       this._isTransitioning = false
       EventHandler.trigger(this._element, EVENT_SHOWN, {
-        relatedTarget
+        relatedTarget,
       })
     }
 
@@ -290,9 +297,11 @@ class Modal {
   _enforceFocus() {
     EventHandler.off(document, EVENT_FOCUSIN) // guard against infinite focus loop
     EventHandler.on(document, EVENT_FOCUSIN, event => {
-      if (document !== event.target &&
-          this._element !== event.target &&
-          !this._element.contains(event.target)) {
+      if (
+        document !== event.target &&
+        this._element !== event.target &&
+        !this._element.contains(event.target)
+      ) {
         this._element.focus()
       }
     })
@@ -340,9 +349,9 @@ class Modal {
   }
 
   _showBackdrop(callback) {
-    const animate = this._element.classList.contains(CLASS_NAME_FADE) ?
-      CLASS_NAME_FADE :
-      ''
+    const animate = this._element.classList.contains(CLASS_NAME_FADE)
+      ? CLASS_NAME_FADE
+      : ''
 
     if (this._isShown && this._config.backdrop) {
       this._backdrop = document.createElement('div')
@@ -378,7 +387,9 @@ class Modal {
         return
       }
 
-      const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
+      const backdropTransitionDuration = getTransitionDurationFromElement(
+        this._backdrop
+      )
 
       EventHandler.one(this._backdrop, TRANSITION_END, callback)
       emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
@@ -391,7 +402,9 @@ class Modal {
       }
 
       if (this._element.classList.contains(CLASS_NAME_FADE)) {
-        const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
+        const backdropTransitionDuration = getTransitionDurationFromElement(
+          this._backdrop
+        )
         EventHandler.one(this._backdrop, TRANSITION_END, callbackRemove)
         emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
       } else {
@@ -404,13 +417,18 @@ class Modal {
 
   _triggerBackdropTransition() {
     if (this._config.backdrop === 'static') {
-      const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+      const hideEvent = EventHandler.trigger(
+        this._element,
+        EVENT_HIDE_PREVENTED
+      )
       if (hideEvent.defaultPrevented) {
         return
       }
 
       this._element.classList.add(CLASS_NAME_STATIC)
-      const modalTransitionDuration = getTransitionDurationFromElement(this._element)
+      const modalTransitionDuration = getTransitionDurationFromElement(
+        this._element
+      )
       EventHandler.one(this._element, TRANSITION_END, () => {
         this._element.classList.remove(CLASS_NAME_STATIC)
       })
@@ -456,29 +474,43 @@ class Modal {
       //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
 
       // Adjust fixed content padding
-      SelectorEngine.find(SELECTOR_FIXED_CONTENT)
-        .forEach(element => {
-          const actualPadding = element.style.paddingRight
-          const calculatedPadding = window.getComputedStyle(element)['padding-right']
-          Manipulator.setDataAttribute(element, 'padding-right', actualPadding)
-          element.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
-        })
+      SelectorEngine.find(SELECTOR_FIXED_CONTENT).forEach(element => {
+        const actualPadding = element.style.paddingRight
+        const calculatedPadding = window.getComputedStyle(element)[
+          'padding-right'
+        ]
+        Manipulator.setDataAttribute(element, 'padding-right', actualPadding)
+        element.style.paddingRight = `${
+          parseFloat(calculatedPadding) + this._scrollbarWidth
+        }px`
+      })
 
       // Adjust sticky content margin
-      SelectorEngine.find(SELECTOR_STICKY_CONTENT)
-        .forEach(element => {
-          const actualMargin = element.style.marginRight
-          const calculatedMargin = window.getComputedStyle(element)['margin-right']
-          Manipulator.setDataAttribute(element, 'margin-right', actualMargin)
-          element.style.marginRight = `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`
-        })
+      SelectorEngine.find(SELECTOR_STICKY_CONTENT).forEach(element => {
+        const actualMargin = element.style.marginRight
+        const calculatedMargin = window.getComputedStyle(element)[
+          'margin-right'
+        ]
+        Manipulator.setDataAttribute(element, 'margin-right', actualMargin)
+        element.style.marginRight = `${
+          parseFloat(calculatedMargin) - this._scrollbarWidth
+        }px`
+      })
 
       // Adjust body padding
       const actualPadding = document.body.style.paddingRight
-      const calculatedPadding = window.getComputedStyle(document.body)['padding-right']
+      const calculatedPadding = window.getComputedStyle(document.body)[
+        'padding-right'
+      ]
 
-      Manipulator.setDataAttribute(document.body, 'padding-right', actualPadding)
-      document.body.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
+      Manipulator.setDataAttribute(
+        document.body,
+        'padding-right',
+        actualPadding
+      )
+      document.body.style.paddingRight = `${
+        parseFloat(calculatedPadding) + this._scrollbarWidth
+      }px`
     }
 
     document.body.classList.add(CLASS_NAME_OPEN)
@@ -486,24 +518,22 @@ class Modal {
 
   _resetScrollbar() {
     // Restore fixed content padding
-    SelectorEngine.find(SELECTOR_FIXED_CONTENT)
-      .forEach(element => {
-        const padding = Manipulator.getDataAttribute(element, 'padding-right')
-        if (typeof padding !== 'undefined') {
-          Manipulator.removeDataAttribute(element, 'padding-right')
-          element.style.paddingRight = padding
-        }
-      })
+    SelectorEngine.find(SELECTOR_FIXED_CONTENT).forEach(element => {
+      const padding = Manipulator.getDataAttribute(element, 'padding-right')
+      if (typeof padding !== 'undefined') {
+        Manipulator.removeDataAttribute(element, 'padding-right')
+        element.style.paddingRight = padding
+      }
+    })
 
     // Restore sticky content and navbar-toggler margin
-    SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`)
-      .forEach(element => {
-        const margin = Manipulator.getDataAttribute(element, 'margin-right')
-        if (typeof margin !== 'undefined') {
-          Manipulator.removeDataAttribute(element, 'margin-right')
-          element.style.marginRight = margin
-        }
-      })
+    SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`).forEach(element => {
+      const margin = Manipulator.getDataAttribute(element, 'margin-right')
+      if (typeof margin !== 'undefined') {
+        Manipulator.removeDataAttribute(element, 'margin-right')
+        element.style.marginRight = margin
+      }
+    })
 
     // Restore body padding
     const padding = Manipulator.getDataAttribute(document.body, 'padding-right')
@@ -515,11 +545,13 @@ class Modal {
     }
   }
 
-  _getScrollbarWidth() { // thx d.walsh
+  _getScrollbarWidth() {
+    // thx d.walsh
     const scrollDiv = document.createElement('div')
     scrollDiv.className = CLASS_NAME_SCROLLBAR_MEASURER
     document.body.appendChild(scrollDiv)
-    const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth
+    const scrollbarWidth =
+      scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth
     document.body.removeChild(scrollDiv)
     return scrollbarWidth
   }
@@ -532,7 +564,7 @@ class Modal {
       const _config = {
         ...Default,
         ...Manipulator.getDataAttributes(this),
-        ...typeof config === 'object' && config ? config : {}
+        ...(typeof config === 'object' && config ? config : {}),
       }
 
       if (!data) {
@@ -562,38 +594,43 @@ class Modal {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  const target = getElementFromSelector(this)
+EventHandler.on(
+  document,
+  EVENT_CLICK_DATA_API,
+  SELECTOR_DATA_TOGGLE,
+  function (event) {
+    const target = getElementFromSelector(this)
 
-  if (this.tagName === 'A' || this.tagName === 'AREA') {
-    event.preventDefault()
-  }
-
-  EventHandler.one(target, EVENT_SHOW, showEvent => {
-    if (showEvent.defaultPrevented) {
-      // only register focus restorer if modal will actually get shown
-      return
+    if (this.tagName === 'A' || this.tagName === 'AREA') {
+      event.preventDefault()
     }
 
-    EventHandler.one(target, EVENT_HIDDEN, () => {
-      if (isVisible(this)) {
-        this.focus()
+    EventHandler.one(target, EVENT_SHOW, showEvent => {
+      if (showEvent.defaultPrevented) {
+        // only register focus restorer if modal will actually get shown
+        return
       }
-    })
-  })
 
-  let data = Data.getData(target, DATA_KEY)
-  if (!data) {
-    const config = {
-      ...Manipulator.getDataAttributes(target),
-      ...Manipulator.getDataAttributes(this)
+      EventHandler.one(target, EVENT_HIDDEN, () => {
+        if (isVisible(this)) {
+          this.focus()
+        }
+      })
+    })
+
+    let data = Data.getData(target, DATA_KEY)
+    if (!data) {
+      const config = {
+        ...Manipulator.getDataAttributes(target),
+        ...Manipulator.getDataAttributes(this),
+      }
+
+      data = new Modal(target, config)
     }
 
-    data = new Modal(target, config)
+    data.show(this)
   }
-
-  data.show(this)
-})
+)
 
 const $ = getjQuery()
 

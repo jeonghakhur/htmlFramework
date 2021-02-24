@@ -1,4 +1,56 @@
+/* eslint-disable no-undef */
+const getPage = target => {
+  const body = document.querySelector('#content')
+
+  if (target.indexOf('#') !== -1) {
+    target = target.split('#')[1]
+  }
+
+  axios.get(`${target}.html`)
+  .then(response => {
+    body.innerHTML = response.data
+    console.log(response)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+const navi = () => {
+  const naviEl = document.querySelector('.ly-nav')
+
+  naviEl.addEventListener('click', e => {
+    if (e.target.nodeName === 'A' && e.target.dataset.toggle) return
+    e.preventDefault()
+
+    const el = e.target
+    const target = el.getAttribute('href')
+    window.location.hash = target
+
+    getPage(target)
+  })
+}
+
+const loadPage = () => {
+  const { hash } = window.location
+  if (!hash) return
+
+  getPage(hash)
+}
+
+const hashChange = () => {
+  window.addEventListener('hashchange', e => {
+    console.log(e)
+    getPage(window.location.hash)
+  }, false)
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  loadPage()
+  hashChange()
+
   // Pre 코드 치환 및 공백 처리
   document.querySelectorAll('pre code').forEach(block => {
     let html = block.innerHTML
@@ -84,4 +136,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   collapseFunc()
+  navi()
 })

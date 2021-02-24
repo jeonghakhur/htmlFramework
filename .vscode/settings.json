@@ -2,5 +2,8 @@
   "beautify.ignore": ["**/*.scss"],
   "[scss]": {
     "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "htmlhint.options": {
+    "doctype-first": false
   }
 }
