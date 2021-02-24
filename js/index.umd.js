@@ -3,7 +3,7 @@
 // import Carousel from './src/carousel'
 // import Collapse from './src/collapse'
 // import Dropdown from './src/dropdown'
-// import Modal from './src/modal'
+import Modal from './src/modal'
 // import Popover from './src/popover'
 // import ScrollSpy from './src/scrollspy'
 // import Tab from './src/tab'
@@ -16,7 +16,7 @@ export default {
   // Carousel,
   // Collapse,
   // Dropdown,
-  // Modal,
+  Modal,
   // Popover,
   // ScrollSpy,
   // Tab,
