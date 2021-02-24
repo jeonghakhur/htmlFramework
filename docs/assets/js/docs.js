@@ -84,4 +84,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   collapseFunc();
+  console.log(axios)
 })

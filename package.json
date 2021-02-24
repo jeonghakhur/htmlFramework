@@ -43,7 +43,9 @@
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.19.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
   "jspm": {
     "registry": "npm",
     "main": "js/bootstrap",
