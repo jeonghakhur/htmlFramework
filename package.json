@@ -43,7 +43,8 @@
     "rollup-plugin-istanbul": "^2.0.1",
     "stylelint": "^13.10.0",
     "stylelint-config-recommended-scss": "^4.2.0",
-    "stylelint-scss": "^3.19.0"
+    "stylelint-scss": "^3.19.0",
+    "swiper": "^6.4.15"
   },
   "dependencies": {
     "axios": "^0.21.1"

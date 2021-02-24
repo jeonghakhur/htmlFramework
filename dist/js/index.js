@@ -2624,14 +2624,16 @@
   Popper.Defaults = Defaults;
 
   var Tooltip = function Tooltip() {
-    this._popper = new Popper(document.querySelector('body'), document.querySelector('button'), {
-      placement: 'top'
-    });
-    console.log(this._poper);
-  };
+    // this.name = 'jeonghak'
+    this._element = null;
 
-  var tooltip = new Tooltip();
-  console.log(tooltip);
+    if (this._element) {
+      this._popper = new Popper(document.querySelector('body'), document.querySelector('button'), {
+        placement: 'top'
+      });
+      console.log(this._poper);
+    }
+  }; // const tooltip = new Tooltip()
 
   // import Alert from './src/alert'
   var index_umd = {
