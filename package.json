@@ -12,7 +12,7 @@
     "css-minify": "cleancss -O1 --format breakWith=lf --with-rebase --input-source-map --source-map-inline-sources --output dist/css/index.min.css dist/css/index.css",
     "css-prefix": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\"",
     "js-compile": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
-    "js-lint": "eslint js/src --cache --cache-location .cache/.eslintcache --report-unused-disable-directives .",
+    "js-lint": "eslint \"js/**/*.js\" --cache --cache-location .cache/.eslintcache --report-unused-disable-directives .",
     "html-list": "node build/html-list",
     "watch": "npm-run-all --parallel watch-*",
     "watch-html": "nodemon --watch html/ --ext html --exec \"npm-run-all html-list\"",

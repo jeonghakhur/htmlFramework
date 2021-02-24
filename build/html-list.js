@@ -24,7 +24,7 @@ const getAllFiles = (dirPath, arrayOfFiles) => {
 const readFile = file => {
   return new Promise(resolve => {
     fs.readFile(file, 'utf-8', (err, data) => {
-
+      // eslint-disable-next-line curly
       if (err) throw err
       const obj = {}
       console.log(htmlDir)
