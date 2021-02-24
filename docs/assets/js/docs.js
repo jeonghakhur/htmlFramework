@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     block.innerHTML = html
   })
 
-  // 코드 하이라이터 클립보드 기능 추가
+  // 코드 하이라이터 클립보드 기능 추가.
   const btnHtml =
     '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
   document
