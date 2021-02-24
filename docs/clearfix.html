@@ -32,7 +32,7 @@
           <li><a href="#none">Forms</a></li>
           <li><a href="#none">Components</a></li>
           <li>
-            <a href="#none" data-toggle="collapse" data-expanded="false">Helpers</a>
+            <a href="#none" data-toggle="collapse" data-expanded="true">Helpers</a>
             <div class="collapse">
               <ul>
                 <li><a href="clearfix.html">Clearfix</a></li>
@@ -51,6 +51,7 @@
                 <li><a href="position.html">Position</a></li>
                 <li><a href="sizing.html">Sizing</a></li>
                 <li><a href="vertical-align.html">Vertical align</a></li>
+                <li><a href="text-truncation.html">Text truncation</a></li>
               </ul>
             </div>
           </li>
@@ -59,44 +60,54 @@
     </header>
 
     <div class="ly-container">
-      <aside class="ly-sidebar">
-        <ul class="ly-nav">
-          <li><a href="#none">Core concepts</a></li>
-          <li><a href="#none">Available breakpoints</a></li>
-          <li>
-            <a href="#none">Media queries</a>
-            <ul>
-              <li><a href="#none">Min-width</a></li>
-              <li><a href="#none">Max-width</a></li>
-              <li><a href="#none">Single breakpoint</a></li>
-              <li><a href="#none">Between breakpoints</a></li>
-            </ul>
-          </li>
-        </ul>
-      </aside>
-
       <main class="ly-content">
         <div classs="row">
           <div class="page-title-wrap">
-            <h1 class="title">Breakpoints</h1>
-            <p clalss="desc">Breakpoints are customizable widths that determine how your responsive layout behaves
-              across device or viewport sizes in Bootstrap.</p>
+            <h1 class="title">Clearfix</h1>
+            <p clalss="desc">Quickly and easily clear floated content within a container by adding a clearfix utility.
+            </p>
           </div>
+
+          <p class="ex-row">html에서 작성 시</p>
+          <div class="highlight">
+            <pre class="language-html"><code>
+            <div class="clearfix">...</div>
+          </code></pre>
+          </div>
+
+          <p class="ex-row">SCSS에서 mixin 사용</p>
+          <div class="highlight">
+            <pre class="language-html"><code>
+              .element {
+                @include clearfix;
+              }
+          </code></pre>
+          </div>
+
+          <div class="bd-example clearfix-util">
+            <div class="clearfix">
+              <div class="f-left">왼쪽 float</div>
+              <div class="f-right">오른쪽 float</div>
+            </div>
+          </div>
+          <div class="highlight">
+            <pre class="language-html"><code>
+            <div class="clearfix">
+              <div class="f-left">왼쪽 float</div>
+              <div class="f-right">오른쪽 float</div>
+            </div>
+          </code></pre>
+          </div>
+
         </div>
+
       </main>
     </div>
 
+
     <footer class="ly-footer"></footer>
   </div>
-  <div class="highlight">
-    <pre class="language-html"><code>
-      <h1>
-        <span>
-          <a>asdf</a>
-        </span>
-      </h1>
-    </code></pre>
-  </div>
+
   <script src="../dist/js/index.js"></script>
   <script src="assets/js/vendor/clipboard.min.js"></script>
   <script src="assets/js/vendor/anchor.min.js"></script>

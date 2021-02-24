@@ -3,6 +3,10 @@
 
 // Helpers
 @import "mixins/breakpoints";
+@import "mixins/text-truncate";
 
 // Utilities
 @import "mixins/utilities";
+
+// Layout
+@import "mixins/clearfix";

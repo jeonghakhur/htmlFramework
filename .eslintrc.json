@@ -9,6 +9,7 @@
   ],
   "rules": {
     "capitalized-comments": "off",
+    "comma-dangle": "off",
     "indent": [
       "error",
       2,
