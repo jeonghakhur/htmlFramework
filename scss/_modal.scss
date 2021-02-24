@@ -26,24 +26,21 @@
 
 .modal-dialog {
   position: relative;
-  width: auto;
-  margin: $modal-dialog-margin;
-  // allow clicks to pass through for custom click handling to close modal
+  width: 500px;
+  margin: 1.75rem auto;
   pointer-events: none;
 
-  // When fading in the modal, animate it to slide down
   .modal.fade & {
-    @include transition($modal-transition);
-    transform: $modal-fade-transform;
+    transition: transform 0.3s ease-out;
+    transform: translate(0, -50px);
   }
 
   .modal.show & {
-    transform: $modal-show-transform;
+    transform: none;
   }
 
-  // When trying to close, animate focus to scale
   .modal.modal-static & {
-    transform: $modal-scale-transform;
+    transform: scale(1.02);
   }
 }
 
@@ -52,30 +49,25 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
-  // counteract the pointer-events: none; in the .modal-dialog
-  color: $modal-content-color;
+  width: 100%;
   pointer-events: auto;
   background-color: $white;
   background-clip: padding-box;
   border: 1px solid #333;
   border-radius: 3px;
-  // Remove focus outline from opened modal
   outline: 0;
+  color: #333;
 }
 
 // Modal body
-// Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
-  // Enable `flex-grow: 1` so that the body take up as much space as possible
-  // when there should be a fixed height on `.modal-dialog`.
   flex: 1 1 auto;
   padding: 1rem;
 }
 
 .modal-dialog-scrollable {
-  height: subtract(100%, $modal-dialog-margin * 2);
+  height: calc(100% - 1rem);
 
   .modal-content {
     max-height: 100%;
@@ -90,7 +82,7 @@
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  min-height: subtract(100%, $modal-dialog-margin * 2);
+  min-height: calc(100% - 1rem);
 }
 
 // Modal background
@@ -114,12 +106,11 @@
 }
 
 // Modal header
-// Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
+  justify-content: space-between;
   padding: 1rem 1rem;
   border-bottom: 1px solid #dee2e6;
   border-radius: 3px;
@@ -153,7 +144,6 @@
   }
 }
 
-// Title text within header
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
@@ -164,17 +154,14 @@
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
-  align-items: center; // vertically center
-  justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: $modal-inner-padding - $modal-footer-margin-between / 2;
-  border-top: $modal-footer-border-width solid $modal-footer-border-color;
-  @include border-bottom-radius($modal-content-inner-border-radius);
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-top: 1px solid #dee2e6;
+  border-radius: 0 0 3px 3px;
 
-  // Place margin between footer elements
-  // This solution is far from ideal because of the universal selector usage,
-  // but is needed to fix https://github.com/twbs/bootstrap/issues/24800
   >* {
-    margin: $modal-footer-margin-between / 2;
+    margin: 4px;
   }
 }
 
@@ -187,77 +174,21 @@
   overflow: scroll;
 }
 
-// Scale up the modal
-@include media-breakpoint-up(sm) {
 
-  // Automatically set modal's width for larger viewports
-  .modal-dialog {
-    max-width: $modal-md;
-    margin: $modal-dialog-margin-y-sm-up auto;
-  }
-
-  .modal-dialog-scrollable {
-    height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
-  }
-
-  .modal-dialog-centered {
-    min-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
-  }
+// full screen
+.modal-fullscreen {
+  width: 100vw;
+  min-width: none;
+  height: 100%;
+  margin: 0;
 
   .modal-content {
-    @include box-shadow($modal-content-box-shadow-sm-up);
+    height: 100%;
+    border-radius: 0;
+    border: 0;
   }
 
-  .modal-sm {
-    max-width: $modal-sm;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-
-  .modal-lg,
-  .modal-xl {
-    max-width: $modal-lg;
+  .modal-body {
+    overflow-y: auto;
   }
 }
-
-@include media-breakpoint-up(xl) {
-  .modal-xl {
-    max-width: $modal-xl;
-  }
-}
-
-// scss-docs-start modal-fullscreen-loop
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-  $postfix: if($infix !="", $infix + "-down", "");
-
-  @include media-breakpoint-down($breakpoint) {
-    .modal-fullscreen#{$postfix} {
-      width: 100vw;
-      max-width: none;
-      height: 100%;
-      margin: 0;
-
-      .modal-content {
-        height: 100%;
-        border: 0;
-        @include border-radius(0);
-      }
-
-      .modal-header {
-        @include border-radius(0);
-      }
-
-      .modal-body {
-        overflow-y: auto;
-      }
-
-      .modal-footer {
-        @include border-radius(0);
-      }
-    }
-  }
-}
-
-// scss-docs-end modal-fullscreen-loop
