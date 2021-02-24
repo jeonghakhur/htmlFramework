@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     block.innerHTML = html
   })
 
-  // 코드 하이라이터 클립보드 기능 추가
+  // 코드 하이라이터 클립보드 기능 추가.
   const btnHtml =
     '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
   document
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   )
   const collapseFunc = () => {
     const showMenu = target => {
-      target.setAttribute('data-expanded', 'true')
+      target.dataset.expanded = 'true'
       const collapse = target.nextElementSibling
       collapse.className = 'collapsing'
       setTimeout(() => {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const hideMenu = target => {
-      target.setAttribute('data-expanded', 'false')
+      target.dataset.expanded = 'false'
       const collapse = target.nextElementSibling
       collapse.className = 'collapsing'
       setTimeout(() => {

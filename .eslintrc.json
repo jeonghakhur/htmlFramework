@@ -5,11 +5,12 @@
     "plugin:import/warnings",
     "plugin:unicorn/recommended",
     "xo/esnext",
-    "xo/browser"
+    "xo/browser",
+    "prettier"
   ],
   "rules": {
     "capitalized-comments": "off",
-    "comma-dangle": "off",
+    // "comma-dangle": "off",
     "indent": [
       "error",
       2,
@@ -46,6 +47,8 @@
     "unicorn/no-array-for-each": "off",
     "unicorn/prefer-math-trunc": "off",
     "unicorn/consistent-destructuring": "off",
-    "unicorn/prefer-optional-catch-binding": "off"
+    "unicorn/prefer-optional-catch-binding": "off",
+    "unicorn/prefer-dom-node-append": "off",
+    "unicorn/no-array-callback-reference": "off"
   }
 }
