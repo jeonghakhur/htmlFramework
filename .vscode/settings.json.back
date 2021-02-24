@@ -1,0 +1,124 @@
+{
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
+  "liveServer.settings.ChromeDebuggingAttachment": true,
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
+  "[html]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  // "prettier.disableLanguages": [
+  //     "json"
+  // ],
+  "prettier.singleQuote": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+  // "editor.codeActionsOnSave": {
+  //     "source.fixAll.eslint": true
+  // },
+  "csscomb.preset": "zen",
+  "editor.wordWrap": "on",
+  "liveServer.settings.donotVerifyTags": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "git.autofetch": true,
+  "gitlens.views.repositories.files.layout": "tree",
+  "liveSassCompile.settings.formats": [
+    // This is Default.
+    {
+      "format": "expanded",
+      "extensionName": ".css"
+      // "savePath": "~/../css/"
+    }
+    // You can add more
+    // {
+    //     "format": "compressed",
+    //     "extensionName": ".min.css",
+    //     "savePath": "/dist/css"
+    // },
+    // // More Complex
+    // {
+    //     "format": "compressed",
+    //     "extensionName": ".min.css",
+    //     "savePath": "~/../css/"
+    // }
+  ],
+  "liveSassCompile.settings.showOutputWindow": false,
+  // "prettier.vueIndentScriptAndStyle": true,
+  // "prettier.htmlWhitespaceSensitivity": "ignore",
+  //html
+  "html.format.indentInnerHtml": false,
+  "editor.parameterHints.enabled": false,
+  "javascript.format.enable": false,
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "files.associations": {
+    ".*rc": "jsonc",
+    "*.json": "json",
+    "*.content": "css",
+    "*.html": "html",
+    ".eslintrc.json": "jsonc"
+  },
+  "sync.autoDownload": false,
+  "sync.gist": "17d6ce753bd2852d7fad5bd341da964c",
+  "prettier.packageManager": "yarn",
+  "eslint.packageManager": "yarn",
+  // "htmlhint.options": {
+  //     "attr-lowercase": false,
+  // }
+  "emmet.excludeLanguages": ["markdown", "pug", "javascript"],
+  "editor.quickSuggestions": {
+    // "other": false,
+    // "comments": false,
+    // "strings": false
+  },
+  "editor.minimap.enabled": false,
+  "translator.naver": {
+    "clientId": "X1CZagz6m95cQd44cMdT",
+    "clientSecret": "fwB2HOw9SY"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "window.title": "${activeFolderLong}",
+  "gitlens.advanced.messages": {
+    "suppressFileNotUnderSourceControlWarning": true
+  },
+  "workbench.sideBar.location": "left",
+  "terminal.integrated.fontFamily": "D2Coding",
+  //go
+  "go.testOnSave": true,
+  "go.lintOnSave": "package",
+  "go.formatTool": "goimports",
+  "go.testFlags": ["-v"],
+  "go.autocompleteUnimportedPackages": true,
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "git.enableSmartCommit": true,
+  "liveServer.settings.CustomBrowser": "chrome",
+  "html.format.maxPreserveNewLines": 0,
+  "html.format.extraLiners": "",
+  "editor.accessibilitySupport": "on",
+  "conf.resource.insertEmptyLastLine": {
+    "a": true,
+    "Untitled-1": true
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Material Theme High Contrast",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.zoomLevel": -1
+}
