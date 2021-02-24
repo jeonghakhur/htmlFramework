@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   )
   const collapseFunc = () => {
     const showMenu = target => {
-      target.setAttribute('data-expanded', 'true')
+      target.dataset.expanded = 'true'
       const collapse = target.nextElementSibling
       collapse.className = 'collapsing'
       setTimeout(() => {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const hideMenu = target => {
-      target.setAttribute('data-expanded', 'false')
+      target.dataset.expanded = 'false'
       const collapse = target.nextElementSibling
       collapse.className = 'collapsing'
       setTimeout(() => {
