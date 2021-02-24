@@ -5,8 +5,8 @@
     "plugin:import/warnings",
     "plugin:unicorn/recommended",
     "xo/esnext",
-    "xo/browser"
-    // "prettier"
+    "xo/browser",
+    "prettier"
   ],
   "rules": {
     "capitalized-comments": "off",
