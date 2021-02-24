@@ -40,7 +40,7 @@
             </div>
           </li>
           <li>
-            <a href="#none" data-toggle="collapse" data-expanded="false">Utilities</a>
+            <a href="#none" data-toggle="collapse" data-expanded="true">Utilities</a>
             <div class="collapse">
               <ul>
                 <li><a href="borders.html">Borders</a></li>
@@ -51,6 +51,7 @@
                 <li><a href="position.html">Position</a></li>
                 <li><a href="sizing.html">Sizing</a></li>
                 <li><a href="vertical-align.html">Vertical align</a></li>
+                <li><a href="text-truncation.html">Text truncation</a></li>
               </ul>
             </div>
           </li>
@@ -61,42 +62,78 @@
     <div class="ly-container">
       <aside class="ly-sidebar">
         <ul class="ly-nav">
-          <li><a href="#none">Core concepts</a></li>
-          <li><a href="#none">Available breakpoints</a></li>
-          <li>
-            <a href="#none">Media queries</a>
-            <ul>
-              <li><a href="#none">Min-width</a></li>
-              <li><a href="#none">Max-width</a></li>
-              <li><a href="#none">Single breakpoint</a></li>
-              <li><a href="#none">Between breakpoints</a></li>
-            </ul>
-          </li>
+          <li><a href="#border-1">Border Additive</a></li>
+          <li><a href="#border-2">Border Subtractive</a></li>
+          <li><a href="#border-3">Border color</a></li>
         </ul>
       </aside>
 
       <main class="ly-content">
         <div classs="row">
           <div class="page-title-wrap">
-            <h1 class="title">Breakpoints</h1>
-            <p clalss="desc">Breakpoints are customizable widths that determine how your responsive layout behaves
-              across device or viewport sizes in Bootstrap.</p>
+            <h1 class="title">Borders</h1>
+            <p clalss="desc">Use border utilities to quickly style the border and border-radius of an element. Great for
+              images, buttons, or any other element.
+            </p>
           </div>
+
+          <h2 id="border-1">Border Additive</h2>
+          <div class="bd-example border-utils">
+            <span class="border-1"></span>
+            <span class="border-top-1"></span>
+            <span class="border-right-1"></span>
+            <span class="border-bottom-1"></span>
+            <span class="border-left-1"></span>
+          </div>
+          <div class="highlight">
+            <pre class="language-html"><code>
+            <span class="border-1"></span>
+            <span class="border-top-1"></span>
+            <span class="border-right-1"></span>
+            <span class="border-bottom-1"></span>
+            <span class="border-left-1"></span>
+          </code></pre>
+          </div>
+
+          <h2 id="border-2">Border Subtractive</h2>
+          <div class="bd-example border-utils border">
+            <span class="border-0"></span>
+            <span class="border-top-0"></span>
+            <span class="border-right-0"></span>
+            <span class="border-bottom-0"></span>
+            <span class="border-left-0"></span>
+          </div>
+          <div class="highlight">
+            <pre class="language-html"><code>
+            <span class="border-0"></span>
+            <span class="border-top-0"></span>
+            <span class="border-right-0"></span>
+            <span class="border-bottom-0"></span>
+            <span class="border-left-0"></span>
+          </code></pre>
+          </div>
+
+          <h2 id="border-3">Border color</h2>
+          <div class="bd-example border-utils border last">
+            <span class="border-1 border-color-black"></span>
+            <span class="border-1 border-color-white"></span>
+          </div>
+          <div class="highlight">
+            <pre class="language-html"><code>
+            <span class="border-1 border-color-black"></span>
+            <span class="border-1 border-color-white"></span>
+          </code></pre>
+          </div>
+
         </div>
+
       </main>
     </div>
 
+
     <footer class="ly-footer"></footer>
   </div>
-  <div class="highlight">
-    <pre class="language-html"><code>
-      <h1>
-        <span>
-          <a>asdf</a>
-        </span>
-      </h1>
-    </code></pre>
-  </div>
+
   <script src="../dist/js/index.js"></script>
   <script src="assets/js/vendor/clipboard.min.js"></script>
   <script src="assets/js/vendor/anchor.min.js"></script>

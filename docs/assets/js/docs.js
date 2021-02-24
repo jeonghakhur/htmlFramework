@@ -28,4 +28,60 @@ document.addEventListener('DOMContentLoaded', () => {
   clipboard.on('success', e => {
     e.clearSelection()
   })
+
+  const toggleGroup = Array.from(document.querySelectorAll('[data-toggle="collapse"]'));
+  const collapseFunc = () => {
+
+    const showMenu = (target) => {
+      target.setAttribute('data-expanded', 'true');
+      const collapse = target.nextElementSibling;
+      collapse.className = 'collapsing';
+      setTimeout(() => {
+        collapse.style.height = `${collapse.children[0].clientHeight}px`;
+      }, 100);
+
+      collapse.addEventListener('transitionend', (e) => {
+        e.target.className = 'collapse show';
+      })
+    }
+
+    const hideMenu = (target) => {
+      target.setAttribute('data-expanded', 'false');
+      const collapse = target.nextElementSibling;
+      collapse.className = 'collapsing';
+      setTimeout(() => {
+        collapse.style.height = '0px';
+      }, 100);
+
+      collapse.addEventListener('transitionend', (e) => {
+        e.target.className = 'collapse';
+      })
+    }
+
+    const toggleMenu = (target) => {
+      if (target.getAttribute('data-expanded') === 'true') {
+        hideMenu(target);
+      } else {
+        showMenu(target)
+      }
+    }
+
+    const start = () => {
+      toggleGroup.forEach(el => {
+        if (el.getAttribute('data-expanded') === 'true') {
+          showMenu(el);
+        }
+      })
+    }
+
+    toggleGroup.forEach(el => {
+      el.addEventListener('click', function (e) {
+        toggleMenu(e.currentTarget);
+      })
+    })
+
+    start();
+  }
+
+  collapseFunc();
 })

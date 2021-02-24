@@ -40,7 +40,7 @@
             </div>
           </li>
           <li>
-            <a href="#none" data-toggle="collapse" data-expanded="false">Utilities</a>
+            <a href="#none" data-toggle="collapse" data-expanded="true">Utilities</a>
             <div class="collapse">
               <ul>
                 <li><a href="borders.html">Borders</a></li>
@@ -51,6 +51,7 @@
                 <li><a href="position.html">Position</a></li>
                 <li><a href="sizing.html">Sizing</a></li>
                 <li><a href="vertical-align.html">Vertical align</a></li>
+                <li><a href="text-truncation.html">Text truncation</a></li>
               </ul>
             </div>
           </li>
@@ -78,25 +79,46 @@
       <main class="ly-content">
         <div classs="row">
           <div class="page-title-wrap">
-            <h1 class="title">Breakpoints</h1>
-            <p clalss="desc">Breakpoints are customizable widths that determine how your responsive layout behaves
-              across device or viewport sizes in Bootstrap.</p>
+            <h1 class="title">Text truncation</h1>
+            <p clalss="desc">Truncate long strings of text with an ellipsis.
+            </p>
           </div>
+
+          <div class="bd-example">
+            <div class="row">
+              <div class="col-2 text-truncate">
+                Praeterea iter est quasdam res quas ex communi. Praeterea iter est quasdam res quas ex communi.
+              </div>
+            </div>
+            <span class="d-inline-block text-truncate" style="max-width: 150px;">
+              Praeterea iter est quasdam res quas ex communi.
+            </span>
+          </div>
+          <div class="highlight">
+            <pre class="language-html"><code>
+            <!-- block 요소 -->
+            <div class="row">
+              <div class="col-2 text-truncate">
+                Praeterea iter est quasdam res quas ex communi.
+              </div>
+            </div>
+
+            <!-- inline-block 요소 -->
+            <span class="d-inline-block text-truncate" style="max-width: 150px;">
+              Praeterea iter est quasdam res quas ex communi.
+            </span>
+          </code></pre>
+          </div>
+
         </div>
+
       </main>
     </div>
 
+
     <footer class="ly-footer"></footer>
   </div>
-  <div class="highlight">
-    <pre class="language-html"><code>
-      <h1>
-        <span>
-          <a>asdf</a>
-        </span>
-      </h1>
-    </code></pre>
-  </div>
+
   <script src="../dist/js/index.js"></script>
   <script src="assets/js/vendor/clipboard.min.js"></script>
   <script src="assets/js/vendor/anchor.min.js"></script>
