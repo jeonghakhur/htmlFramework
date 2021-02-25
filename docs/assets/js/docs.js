@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const collapse = target.nextElementSibling
       collapse.className = 'collapsing'
       setTimeout(() => {
-        collapse.style.height = `${collapse.children[0].clientHeight}px`
+        collapse.style.height = `${collapse.children[0].clientHeight + 10}px`
       }, 100)
 
       collapse.addEventListener('transitionend', e => {
