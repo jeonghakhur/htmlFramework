@@ -1,6 +1,7 @@
 body {
   padding: 0;
   width: 100%;
+  overflow-x: hidden;
 }
 
 html {
@@ -17,28 +18,57 @@ ul li {
   list-style-type: none;
 }
 
-li a {
+a {
   text-decoration: none;
+  color: #333;
 }
 
 .ly-wrapper {
-  display: flex;
-  margin: 50px auto 0;
+  margin: 0 auto;
   max-width: 1400px;
-  min-width: 980px;
+  min-width: 1200px;
 }
 
 .ly-header {
+  position: relative;
+  height: 35px;
+  padding: 0 20px;
+  background-color: #3a8dfd;
+  font-size: 1rem;
+}
+
+.ly-header:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  width: 200vw;
+  height: 100%;
+  background-color: inherit;
+  top: 0;
+  z-index: -1;
+}
+
+.ly-header a {
+  display: inline-block;
+  line-height: 35px;
+  margin: 0 1em;
+  color: white;
+}
+
+.ly-header:before {
+  left: -50%;
+}
+
+.ly-nav {
+  flex-shrink: 0;
   position: sticky;
   top: 0;
   width: 200px;
   height: calc(100vh - 50px);
   padding-bottom: 20px;
+  padding-left: 20px;
   overflow-y: auto;
-}
-
-.ly-nav .collapse {
-  padding-bottom: 10px;
 }
 
 .ly-nav .collapse:not(.show) {
@@ -89,16 +119,19 @@ li a {
   font-size: 1rem;
 }
 
-
-
 .ly-container {
-  /* flex: 1; */
-  width: calc(100% - 200px);
+  display: flex;
+}
+
+.ly-container>* {
+  padding-top: 30px;
 }
 
 .ly-content {
-  width: 980px;
-  padding: 0 40px 50px;
+  width: calc(100% - 200px);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 50px;
   min-height: 100vh;
   font-size: 1rem;
 }

@@ -17,25 +17,45 @@
 <body>
   <div class="ly-wrapper">
     <header class="ly-header">
+      <a href="index.html">가이드</a>
+      <a href="html-list.html">화면목록</a>
+    </header>
+
+    <div class="ly-container">
       <nav class="ly-nav">
         <ul>
           <li>
-            <a href="#none" data-toggle="collapse" data-expanded="false">Layout</a>
+            <a href="#none">Layout</a>
+          </li>
+          <li><a href="#none">Content</a></li>
+          <li>
+            <a href="#none" data-toggle="collapse" data-expanded="false">Forms</a>
             <div class="collapse">
               <ul>
-                <li><a href="components/modal">Containers</a></li>
-                <li><a href="components/tooltip">Breakpoints</a></li>
+                <li><a href="forms/check">Check &amp; Radio</a></li>
+                <li><a href="forms/input">Input</a></li>
+                <li><a href="forms/select">Select</a></li>
+                <li><a href="forms/validation">Validation</a></li>
+                <li><a href="forms/layout">Layout</a></li>
+                <li><a href="forms/form-control">Form Control</a></li>
               </ul>
             </div>
           </li>
-          <li><a href="#none">Content</a></li>
-          <li><a href="#none">Forms</a></li>
-          <li><a href="#none">Components</a></li>
           <li>
-            <a href="#none" data-toggle="collapse" data-expanded="false">Helpers</a>
+            <a href="#none" data-toggle="collapse" data-expanded="false">Components</a>
             <div class="collapse">
               <ul>
-                <li><a href="clearfix.html">Clearfix</a></li>
+                <li><a href="components/modal">Modal</a></li>
+                <li><a href="components/tooltip">Tooltip</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#none" data-toggle="collapse" data-expanded="false">Helpers</a>
+            <div class="collapse" id="hhh">
+              <ul>
+                <li><a href="helpers/clearfix">Clearfix</a></li>
+                <li><a href="helpers/text-truncation">Text truncation</a></li>
               </ul>
             </div>
           </li>
@@ -43,22 +63,26 @@
             <a href="#none" data-toggle="collapse" data-expanded="false">Utilities</a>
             <div class="collapse">
               <ul>
-                <li><a href="borders.html">Borders</a></li>
-                <li><a href="display.html">Display</a></li>
-                <li><a href="flex.html">Flex</a></li>
-                <li><a href="float.html">Float</a></li>
-                <li><a href="overflow.html">Overflow</a></li>
-                <li><a href="position.html">Position</a></li>
-                <li><a href="sizing.html">Sizing</a></li>
-                <li><a href="vertical-align.html">Vertical align</a></li>
+                <li><a href="utilities/borders">Borders</a></li>
+                <li><a href="utilities/display">Display</a></li>
+                <li><a href="utilities/flex">Flex</a></li>
+                <li><a href="utilities/float">Float</a></li>
+                <li><a href="utilities/overflow">Overflow</a></li>
+                <li><a href="utilities/position">Position</a></li>
+                <li><a href="utilities/sizing">Sizing</a></li>
+                <li><a href="utilities/vertical-align">Vertical align</a></li>
               </ul>
             </div>
           </li>
         </ul>
       </nav>
-    </header>
 
-    <div class="ly-container">
+      <main class="ly-content">
+        <div classs="row" id="content">
+          <!-- load content-->
+        </div>
+      </main>
+
       <aside class="ly-sidebar">
         <ul class="ly-nav">
           <li><a href="#none">Core concepts</a></li>
@@ -74,12 +98,6 @@
           </li>
         </ul>
       </aside>
-
-      <main class="ly-content">
-        <div classs="row" id="content">
-          <!-- load content-->
-        </div>
-      </main>
     </div>
 
     <footer class="ly-footer"></footer>

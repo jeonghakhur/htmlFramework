@@ -1,0 +1,36 @@
+<div class="page-title-wrap">
+  <h1 class="title">Clearfix</h1>
+  <p clalss="desc">Quickly and easily clear floated content within a container by adding a clearfix utility.
+  </p>
+</div>
+
+<p class="ex-row">html에서 작성 시</p>
+<div class="highlight">
+  <pre class="language-html"><code>
+  <div class="clearfix">...</div>
+</code></pre>
+</div>
+
+<p class="ex-row">SCSS에서 mixin 사용</p>
+<div class="highlight">
+  <pre class="language-html"><code>
+    .element {
+      @include clearfix;
+    }
+</code></pre>
+</div>
+
+<div class="bd-example clearfix-util">
+  <div class="clearfix">
+    <div class="f-left">왼쪽 float</div>
+    <div class="f-right">오른쪽 float</div>
+  </div>
+</div>
+<div class="highlight">
+  <pre class="language-html"><code>
+  <div class="clearfix">
+    <div class="f-left">왼쪽 float</div>
+    <div class="f-right">오른쪽 float</div>
+  </div>
+</code></pre>
+</div>
