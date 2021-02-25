@@ -159,6 +159,12 @@ a {
   color: #333;
 }
 
+.ly-content h3 {
+  margin-top: 40px;
+  font-size: 22px;
+  color: #555;
+}
+
 .page-title-wrap .desc {
   font-size: 20px;
 }
@@ -183,6 +189,11 @@ a {
   padding: 30px;
   border: 1px solid #ccc;
   border-radius: 3px 3px 0 0;
+}
+
+h2+.bd-example,
+h3+.bd-example {
+  margin-top: 20px;
 }
 
 .ex-row,

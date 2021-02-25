@@ -9,9 +9,9 @@
   <meta name="docsearch:language" content="ko">
   <meta name="docsearch:version" content="4.3">
   <title>우리은행 마이데이터 가이드 페이지</title>
-  <link rel="stylesheet" href="../dist/css/index.css">
-  <link rel="stylesheet" href="assets/css/vendor/prism.css">
-  <link rel="stylesheet" href="assets/css/docs.css">
+  <link href="../dist/css/index.css" rel="stylesheet">
+  <link href="assets/css/vendor/prism.css" rel="stylesheet">
+  <link href="assets/css/docs.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,10 +29,10 @@
           </li>
           <li><a href="#none">Content</a></li>
           <li>
-            <a href="#none" data-toggle="collapse" data-expanded="false">Forms</a>
+            <a data-expanded="false" data-toggle="collapse" href="#none">Forms</a>
             <div class="collapse">
               <ul>
-                <li><a href="forms/check">Check &amp; Radio</a></li>
+                <li><a href="forms/check-radio">Check &amp; Radio</a></li>
                 <li><a href="forms/input">Input</a></li>
                 <li><a href="forms/select">Select</a></li>
                 <li><a href="forms/validation">Validation</a></li>
@@ -42,7 +42,7 @@
             </div>
           </li>
           <li>
-            <a href="#none" data-toggle="collapse" data-expanded="false">Components</a>
+            <a data-expanded="false" data-toggle="collapse" href="#none">Components</a>
             <div class="collapse">
               <ul>
                 <li><a href="components/modal">Modal</a></li>
@@ -51,8 +51,8 @@
             </div>
           </li>
           <li>
-            <a href="#none" data-toggle="collapse" data-expanded="false">Helpers</a>
-            <div class="collapse" id="hhh">
+            <a data-expanded="false" data-toggle="collapse" href="#none">Helpers</a>
+            <div id="hhh" class="collapse">
               <ul>
                 <li><a href="helpers/clearfix">Clearfix</a></li>
                 <li><a href="helpers/text-truncation">Text truncation</a></li>
@@ -60,7 +60,7 @@
             </div>
           </li>
           <li>
-            <a href="#none" data-toggle="collapse" data-expanded="false">Utilities</a>
+            <a data-expanded="false" data-toggle="collapse" href="#none">Utilities</a>
             <div class="collapse">
               <ul>
                 <li><a href="utilities/borders">Borders</a></li>
@@ -78,7 +78,7 @@
       </nav>
 
       <main class="ly-content">
-        <div classs="row" id="content">
+        <div id="content" classs="row">
           <!-- load content-->
         </div>
       </main>
@@ -106,7 +106,7 @@
   <script src="assets/js/vendor/clipboard.min.js"></script>
   <script src="assets/js/vendor/anchor.min.js"></script>
   <script src="assets/js/docs.js"></script>
-  <script src="assets/js/vendor/prism.js" data-manual></script>
+  <script data-manual src="assets/js/vendor/prism.js"></script>
   <script src="assets/js/vendor/axios.min.js"></script>
 </body>
 
