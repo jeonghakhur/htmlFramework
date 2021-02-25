@@ -43,6 +43,6 @@ const rollupConfig = {
   plugins
 }
 
-rollupConfig.output.name = 'WBMD'
+rollupConfig.output.name = 'WBM'
 
 module.exports = rollupConfig

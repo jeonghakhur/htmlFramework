@@ -101,11 +101,9 @@ const emulateTransitionEnd = (element, duration) => {
     element.removeEventListener(TRANSITION_END, listener)
   }
 
-  console.log('a')
   element.addEventListener(TRANSITION_END, listener)
   setTimeout(() => {
     if (!called) {
-      console.log('b')
       triggerTransitionEnd(element)
     }
   }, emulatedDuration)

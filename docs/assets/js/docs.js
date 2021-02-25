@@ -1,4 +1,56 @@
+/* eslint-disable object-shorthand */
 /* eslint-disable no-undef */
+const prism = () => {
+  document.querySelectorAll('pre code').forEach(block => {
+  // const html = Prism.highlight(block.innerHTML, Prism.languages.html, 'html')
+    let html = block.innerHTML
+    const myArray = html.match(/^\s+/)
+    const partten = new RegExp(`^${myArray[0].slice(1)}`, 'mg')
+    const className = block.parentNode.getAttribute('class').split('language-')[1]
+    html = html.trim()
+    html = html.replace(partten, '')
+    html = Prism.highlight(html, Prism.languages[className], className)
+    block.innerHTML = html
+  })
+}
+
+const clipBoard = () => {
+  // 코드 하이라이터 클립보드 기능 추가.
+  const btnHtml =
+    '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
+  document
+    .querySelectorAll('figure.highlight, div.highlight')
+    .forEach(element => {
+      element.insertAdjacentHTML('beforebegin', btnHtml)
+    })
+
+  document.querySelectorAll('.btn-clipboard').forEach(btn => {
+    const tooltipBtn = new WBM.Tooltip(btn)
+
+    btn.addEventListener('mouseleave', () => {
+      tooltipBtn.hide()
+    })
+  })
+
+  const clipboard = new ClipboardJS('.btn-clipboard', {
+    target: function(trigger) {
+      return trigger.parentNode.nextElementSibling
+    }
+  })
+
+  // console.log(clipboard)
+
+  clipboard.on('success', e => {
+    const tooltipBtn = WBM.Tooltip.getInstance(e.trigger)
+
+    e.trigger.setAttribute('data-original-title', 'Copied')
+    tooltipBtn.show()
+
+    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
+    e.clearSelection()
+  })
+}
+
 const getPage = target => {
   const body = document.querySelector('#content')
 
@@ -6,43 +58,12 @@ const getPage = target => {
     target = target.split('#')[1]
   }
 
-  axios.get(`${target}.html`)
-  .then(response => {
-    body.innerHTML = response.data
-
-    document.querySelectorAll('pre code').forEach(block => {
-      // const html = Prism.highlight(block.innerHTML, Prism.languages.html, 'html')
-      let html = block.innerHTML
-      const myArray = html.match(/^\s+/)
-      const partten = new RegExp(`^${myArray[0].slice(1)}`, 'mg')
-      html = html.trim()
-      html = html.replace(partten, '')
-      html = Prism.highlight(html, Prism.languages.html, 'html')
-      block.innerHTML = html
-
-      // 코드 하이라이터 클립보드 기능 추가.
-      const btnHtml =
-        '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
-      document
-        .querySelectorAll('figure.highlight, div.highlight')
-        .forEach(element => {
-          element.insertAdjacentHTML('beforebegin', btnHtml)
-        })
-
-      // eslint-disable-next-line no-undef
-      const clipboard = new ClipboardJS('.btn-clipboard', {
-        target: trigger => trigger.parentNode.nextElementSibling,
-      })
-
-      clipboard.on('success', e => {
-        e.clearSelection()
-      })
-
-    })
-    // console.log(response)
-  })
-  .catch(error => {
-    console.log(error)
+  $.ajax({
+    url: `${target}.html`
+  }).done(data => {
+    $(body).html(data)
+    prism()
+    clipBoard()
   })
 }
 

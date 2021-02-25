@@ -16,7 +16,7 @@
     "html-list": "node build/html-list",
     "watch": "npm-run-all --parallel watch-*",
     "watch-html": "nodemon --watch html/ --ext html --exec \"npm-run-all html-list\"",
-    "watch-js": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
+    "watch-js": "nodemon --watch js/ --ext js --exec \"npm-run-all js-lint js-compile\"",
     "watch-css": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-lint css-compile\""
   },
   "devDependencies": {
@@ -32,6 +32,7 @@
     "eslint-config-xo": "^0.34.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-unicorn": "^28.0.2",
+    "jquery": "^3.5.1",
     "live-server": "^1.2.1",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.7",
