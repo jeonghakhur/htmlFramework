@@ -162,3 +162,7 @@ $container-max-widths: (
 // scss-docs-end container-max-widths
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
+
+// body
+$body-text-align: left;
+$body-color: $white;
