@@ -1,40 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="/dist/css/index.css">
-  <link rel="stylesheet" href="/docs/assets/css/docs.css">
-  <link rel="stylesheet" href="/docs/assets/css/vendor/prism.css">
+  <link rel="stylesheet" href="/dist/css/index.css" />
+  <link rel="stylesheet" href="/docs/assets/css/docs.css" />
+  <link rel="stylesheet" href="/docs/assets/css/vendor/prism.css" />
 </head>
+
 <body>
   <div class="container">
-    <div class="modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+
+    <div class="page-title-wrap">
+      <h1 class="title">모달</h1>
+      <!-- <p clalss="desc">Use border utilities to quickly style the border and border-radius of an element. Great for
+        images, buttons, or any other element.
+      </p> -->
+    </div>
+
+    <h2 id="">기본 모달</h2>
+    <div class="bd-example">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exModal">
+        모달
+      </button>
+      <div class="modal fade" id="exModal" tabindex="-1" aria-labelledby="exModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exModalLabel">모달 제목</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="모달닫기"></button>
+            </div>
+            <div class="modal-body">
+              <p>모달 콘텐츠 본문</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                닫기
+              </button>
+              <button type="button" class="btn btn-primary">
+                확인
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="highlight">
+      <pre class="language-html"><code>
+      <!-- 버튼 -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exModal">
+        모달 버튼
+      </button>
+
+      <!-- 모달 -->
+      <div class="modal fade" id="exModal" tabindex="-1" aria-labelledby="exModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exModalLabel">모달 제목</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="모달닫기"></button>
+            </div>
+            <div class="modal-body">
+              <p>모달 콘텐츠 본문</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                닫기
+              </button>
+              <button type="button" class="btn btn-primary">
+                확인
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </code></pre>
+    </div>
+
+    <h2 id="">수직 가운데 정렬 모달</h2>
+    <div class="bd-example">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exModalCenter">
+        수직 가운데 정렬 모달
+      </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exModalCenterScroll">
+        수직 가운데 정렬 모달 (스크롤)
+      </button>
+      <div class="modal fade" id="exModalCenter" tabindex="-1" aria-labelledby="exModalCenterLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exModalCenterLabel">모달 제목</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="모달닫기"></button>
+            </div>
+            <div class="modal-body">
+              <p>모달 콘텐츠 본문</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                닫기
+              </button>
+              <button type="button" class="btn btn-primary">
+                확인
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="exModalCenterScroll" tabindex="-1" aria-labelledby="exModalCenterScrollLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exModalCenterScrollLabel">모달 제목</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="모달닫기"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                닫기
+              </button>
+              <button type="button" class="btn btn-primary">
+                확인
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <pre class="language-html"><code>
+        <!-- 수직 가운데 정렬 모달 -->
+        <div class="modal-dialog modal-dialog-centered">
+          ...
+        </div>
+
+        <!-- 수직 가운데 정렬 모달 (스크롤) -->
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          ...
+        </div>
+    </code></pre>
+    </div>
+
+    <h2 id="">풀 스크린 모달</h2>
+    <div class="bd-example">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exModalFull">
+        풀 스크린 모달
+      </button>
+      <div class="modal fade" id="exModalFull" tabindex="-1" aria-labelledby="exModalFullLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exModalFullLabel">모달 제목</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="모달닫기"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />모달 콘텐츠 본문<br />
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                닫기
+              </button>
+              <button type="button" class="btn btn-primary">
+                확인
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight">
+      <pre class="language-html"><code>
+        <!-- 풀 스크린 모달 -->
+        <div class="modal-dialog modal-fullscreen">
+          ...
+        </div>
+    </code></pre>
+    </div>
+
   </div>
+
   <script src="/dist/js/index.js"></script>
   <script src="/docs/assets/js/vendor/clipboard.min.js"></script>
   <script src="/docs/assets/js/vendor/anchor.min.js"></script>
   <script src="/docs/assets/js/docs.js"></script>
   <script src="/docs/assets/js/vendor/prism.js"></script>
 </body>
+
 </html>

@@ -24,7 +24,6 @@ li a {
 .ly-wrapper {
   display: flex;
   margin: 50px auto 0;
-  /* background-color: beige; */
   max-width: 1400px;
   min-width: 980px;
 }
@@ -34,10 +33,8 @@ li a {
   top: 0;
   width: 200px;
   height: calc(100vh - 50px);
-  /* padding-left: 20px; */
   padding-bottom: 20px;
   overflow-y: auto;
-  /* background-color: beige; */
 }
 
 .ly-nav .collapse {
@@ -86,7 +83,7 @@ li a {
   color: #666;
 }
 
-.ly-nav li li a {
+.ly-nav li ul a {
   margin-left: 20px;
   font-weight: normal;
   font-size: 1rem;
@@ -112,11 +109,9 @@ li a {
   width: 200px;
   height: calc(100vh - 50px);
   float: right;
-  /* background-color: lightblue; */
 }
 
-.ly-sidebar li a {
-  font-weight: normal;
+.ly-nav .ly-sidebar li a {
   color: #777 !important;
 }
 
