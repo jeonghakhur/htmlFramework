@@ -9,7 +9,37 @@ const getPage = target => {
   axios.get(`${target}.html`)
   .then(response => {
     body.innerHTML = response.data
-    console.log(response)
+
+    document.querySelectorAll('pre code').forEach(block => {
+      // const html = Prism.highlight(block.innerHTML, Prism.languages.html, 'html')
+      let html = block.innerHTML
+      const myArray = html.match(/^\s+/)
+      const partten = new RegExp(`^${myArray[0].slice(1)}`, 'mg')
+      html = html.trim()
+      html = html.replace(partten, '')
+      html = Prism.highlight(html, Prism.languages.html, 'html')
+      block.innerHTML = html
+
+      // 코드 하이라이터 클립보드 기능 추가.
+      const btnHtml =
+        '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
+      document
+        .querySelectorAll('figure.highlight, div.highlight')
+        .forEach(element => {
+          element.insertAdjacentHTML('beforebegin', btnHtml)
+        })
+
+      // eslint-disable-next-line no-undef
+      const clipboard = new ClipboardJS('.btn-clipboard', {
+        target: trigger => trigger.parentNode.nextElementSibling,
+      })
+
+      clipboard.on('success', e => {
+        e.clearSelection()
+      })
+
+    })
+    // console.log(response)
   })
   .catch(error => {
     console.log(error)
@@ -61,24 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     html = html.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     html = html.replace(partten, '')
     block.innerHTML = html
-  })
-
-  // 코드 하이라이터 클립보드 기능 추가.
-  const btnHtml =
-    '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
-  document
-    .querySelectorAll('figure.highlight, div.highlight')
-    .forEach(element => {
-      element.insertAdjacentHTML('beforebegin', btnHtml)
-    })
-
-  // eslint-disable-next-line no-undef
-  const clipboard = new ClipboardJS('.btn-clipboard', {
-    target: trigger => trigger.parentNode.nextElementSibling,
-  })
-
-  clipboard.on('success', e => {
-    e.clearSelection()
   })
 
   const toggleGroup = Array.from(
