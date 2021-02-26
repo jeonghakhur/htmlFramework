@@ -144,7 +144,7 @@ a {
 }
 
 .ly-nav .ly-sidebar li a {
-  color: #777 !important;
+  color: #777 ! important;
 }
 
 .page-title-wrap h1 {
@@ -238,4 +238,34 @@ h3+.bd-example {
 
 .clearfix-util .clearfix div:last-child {
   text-align: right;
+}
+
+.table {
+  width: 100%;
+  /* border-spacing: 0; */
+  /* border-collapse: separate; */
+}
+
+.table th {
+  padding: 0.5rem;
+  border-top: 1px solid var(--color-gray-dark);
+  border-bottom: 1px solid var(--color-gray-dark);
+}
+
+.table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--color-gray);
+}
+
+.doc-callout {
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #eee;
+  border-left-width: .25rem;
+  border-radius: .25rem;
+}
+
+.doc-callout-warning {
+  border-left-color: #f0ad4e;
 }

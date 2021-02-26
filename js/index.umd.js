@@ -9,6 +9,7 @@ import Modal from './src/modal'
 // import Tab from './src/tab'
 // import Toast from './src/toast'
 import Tooltip from './src/tooltip'
+import Sample from './src/sample'
 
 export default {
   // Alert,
@@ -21,5 +22,6 @@ export default {
   // ScrollSpy,
   // Tab,
   // Toast,
-  Tooltip
+  Tooltip,
+  Sample
 }

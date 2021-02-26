@@ -32,17 +32,21 @@ const globals = {
 // Remove last entry in external array to bundle Popper
 plugins.push(resolve())
 
-const rollupConfig = {
+const rollupConfig = [{
   input: path.resolve(__dirname, '../js/index.umd.js'),
   output: {
     banner,
     file: path.resolve(__dirname, '../dist/js/index.js'),
     format: 'umd',
+    name: 'WBM',
     globals
   },
   plugins
-}
-
-rollupConfig.output.name = 'WBM'
+}, {
+  input: path.resolve(__dirname, '../js/docs.js'),
+  output: {
+    file: path.resolve(__dirname, '../docs/assets/js/docs.js')
+  }
+}]
 
 module.exports = rollupConfig

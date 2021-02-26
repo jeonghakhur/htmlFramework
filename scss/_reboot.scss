@@ -21,9 +21,9 @@ body {
   -webkit-tap-highlight-color: rgba($black, 0); // 3
 }
 
-// 미래 보장 규칙 : : focus-visible을 지원하는 브라우저에서 프로그래밍 방식으로 포커스를 받지만 
-// 일반적으로 포커스 아웃 라인을 표시하지 않는 요소의 포커스 아웃 라인을 억제합니다. 
-// 일반적으로 이는 프로그래밍 방식의 포커스를받는 요소로 이어진 상호 작용이 키보드 상호 작용이거나 브라우저가 사용자가 주로 키보드 사용자라고 판단하고 
+// 미래 보장 규칙 : : focus-visible을 지원하는 브라우저에서 프로그래밍 방식으로 포커스를 받지만
+// 일반적으로 포커스 아웃 라인을 표시하지 않는 요소의 포커스 아웃 라인을 억제합니다.
+// 일반적으로 이는 프로그래밍 방식의 포커스를받는 요소로 이어진 상호 작용이 키보드 상호 작용이거나 브라우저가 사용자가 주로 키보드 사용자라고 판단하고
 // 또는 포커스 아웃 라인이 항상 제시됩니다.
 // See https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
 // and https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
@@ -33,7 +33,7 @@ body {
 
 // Typography
 //
-// 1. 머리글에서 위쪽 여백 제거 기본적으로`<h1>`-` <h6>`은 모두 위쪽 및 아래쪽 여백을받습니다. 
+// 1. 머리글에서 위쪽 여백 제거 기본적으로`<h1>`-` <h6>`은 모두 위쪽 및 아래쪽 여백을받습니다.
 
 %heading {
   margin-top: 0; // 1
@@ -41,7 +41,7 @@ body {
   font-family: $font-family-base;
   font-weight: normal;
   line-height: 1;
-  color: $gray-500;
+  color: $gray-900;
 }
 
 h1 {
@@ -230,4 +230,11 @@ pre {
     color: inherit;
     word-break: normal;
   }
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
 }
