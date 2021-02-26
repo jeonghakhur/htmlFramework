@@ -1,0 +1,226 @@
+
+$input-size: 58px;
+$input-radius: 4px;
+
+input {
+  &:focus {
+    outline: 0;
+  }
+}
+
+// Input
+.form-input {
+  display: inline-block;
+  width: 100%;
+  height: $input-size;
+  padding: 0 14px;
+  border-radius: $input-radius;
+  border: 1px solid #ccc;
+  color: #333;
+
+  .form-field & {
+    width: 100%;
+    padding: 20px 0 0;
+    border: none;
+
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+  .form-field-search & {
+    padding-top: 0;
+    padding-right: 100px;
+
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+
+  .input-wrap > & {
+    flex: 1;
+  }
+
+  &:disabled,
+  &:read-only {
+    background-color: #f7f7f7;
+  }
+
+  &:not(:read-only):focus,
+  &:not(:disabled):focus {
+    outline: 0;
+    border: 1px solid $blue;
+  }
+}
+
+.form {
+  margin-top: 10px;
+
+  &-row {
+    display: flex;
+    margin: 0 -5px;
+
+    & + & {
+      margin-top: 15px;
+    }
+  }
+}
+
+.form-field {
+  position: relative;
+  margin: 0 5px;
+  padding: 0 14px;
+  border-radius: $input-radius;
+  border: 1px solid #ccc;
+
+  .form-label {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    transition: all .2s ease;
+  }
+
+  .input-wrap {
+    display: flex;
+
+    .unit {
+      display: none;
+      padding: 30px 0 0 15px;
+    }
+  }
+
+  .form-row & {
+    flex: 1;
+  }
+
+  &[class*="col"] {
+    flex: none;
+
+    @for $i from 1 through 4 {
+      $calcW: 100% / $i;
+
+      &.col-#{$i} {
+        width : calc(#{$calcW} - 10px);
+      }
+    }
+  }
+
+  &.has-focus ::placeholder {
+    opacity: 1;
+  }
+
+  &:hover,
+  &.has-focus {
+    border: 1px solid $blue;
+
+    .form-label {
+      color: $blue;
+    }
+
+    .form-input {
+      border: none;
+    }
+  }
+
+  &.has-focus,
+  &.has-value {
+
+    .form-label {
+      top: 0;
+      transform: translateY(40%);
+      font-size: 12px;
+    }
+
+    .unit {
+      display: block;
+    }
+  }
+}
+
+.form-field label.require:after {
+  content: '*';
+  margin-left: 2px;
+  color: $red;
+}
+
+// 검색 입력
+.form-field-search {
+  position: relative;
+
+  button {
+    position: absolute;
+    display: block;
+    width: $input-size;
+    height: 100%;
+    right: 1px;
+    top: 0;
+    border: none;
+  }
+
+  .reset-button {
+    margin-right: $input-size;
+  }
+
+  .search-button {
+    background: url('../../img/com/bg_search.png') no-repeat 50% 50%;
+  }
+}
+
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+
+.form-field-upload {
+  position: relative;
+  height: 50px;
+
+  &:hover {
+    border: 1px solid $blue;
+  }
+
+  .form-input[type=file] {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+
+  .upload-label {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    padding: 0 20px;
+    line-height: 50px;
+    background-color: #ddd;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .upload-file {
+    display: block;
+    width: calc(100% - 120px);
+    height: 100%;
+    font-size: inherit;
+    appearance: none;
+    border: none;
+  }
+}
+

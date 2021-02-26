@@ -1,0 +1,102 @@
+<div class="page-title-wrap">
+  <h1 class="title">Input</h1>
+  <!-- <p clalss="desc">Use border utilities to quickly style the border and border-radius of an element. Great for
+    images, buttons, or any other element.
+  </p> -->
+</div>
+
+<h2>기본 Input</h2>
+<div class="bd-example">
+  <input type="text" class="form-input" title="텍스트 입력" placeholder="이름 입력">
+</div>
+
+<h3>Disabled</h3>
+<div class="bd-example">
+  <input type="text" class="form-input" title="텍스트 입력" value="내용" disabled>
+</div>
+
+<h3>Readonly</h3>
+<div class="bd-example">
+  <input type="text" class="form-input" title="텍스트 입력" value="내용" readonly>
+</div>
+
+<h2>검색 Input</h2>
+<div class="bd-example">
+  <div class="form">
+    <div class="form-row">
+      <div class="form-field form-field-search">
+        <input type="search" class="form-input" id="formTextLabelA" title="검색" placeholder="검색">
+        <button type="reset" class="reset-button">
+          <span class="sr-only">검색 초기화</span>
+        </button>
+        <button type="button" class="search-button">
+          <span class="sr-only">검색</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>파일 Input</h2>
+<div class="bd-example">
+  <div class="form">
+    <div class="form-field form-field-upload">
+      <label for="formFile" class="upload-label">파일 선택</label>
+      <input class="form-input" type="file" id="formFile">
+      <input type="text" class="upload-file" title="첨부된 파일" readonly>
+    </div>
+  </div>
+</div>
+
+<h2>Input Layout</h2>
+<div class="bd-example">
+  <div class="form">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="inputLabelA" class="form-label require">이름</label>
+        <span class="sr-only">필수입력</span>
+        <input type="text" class="form-input" id="inputLabelA">
+      </div>
+      <div class="form-field">
+        <label for="inputLabelB" class="form-label require">나이</label>
+        <span class="sr-only">필수입력</span>
+        <input type="text" class="form-input" id="inputLabelB">
+      </div>
+      <div class="form-field">
+        <label for="inputLabelC" class="form-label require">성별</label>
+        <span class="sr-only">필수입력</span>
+        <input type="text" class="form-input" id="inputLabelC">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field col-3">
+        <label for="inputLabelD" class="form-label">전화번호</label>
+        <input type="text" class="form-input" id="inputLabelD" placeholder="01012345678">
+      </div>
+      <div class="form-field">
+        <label for="inputLabelE" class="form-label">주소</label>
+        <input type="text" class="form-input" id="inputLabelE">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const inputGroup = [].slice.call(document.querySelectorAll('.form .form-input'));
+  inputGroup.forEach(function(el) {
+    el.addEventListener('focus', function(e) {
+      const t_field = e.target.parentElement;
+      t_field.classList.add('has-focus');
+    });
+    el.addEventListener('change', function(e) {
+      const t_field = e.target.parentElement;
+      if (e.target.value) {
+        t_field.classList.add('has-value');
+      }
+    });
+    el.addEventListener('blur', function(e) {
+      const t_field = e.target.parentElement;
+      t_field.classList.remove('has-focus');
+    });
+  })
+</script>

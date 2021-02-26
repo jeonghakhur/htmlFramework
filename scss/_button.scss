@@ -2,22 +2,10 @@ button {
   margin: 0;
   padding: 0;
   border: 0;
+  border-radius: 0;
   background-color: transparent;
-}
-
-
-.btn-clipboard {
-  color: #fff;
-
-  &:hover {
-    padding: 0.5rem 1rem;
-    color: #000;
-    background-color: #fff;
-  }
-}
-
-.btn {
-  &-primary {
-  background-color: var(--color-primary);
-  }
+  vertical-align: middle;
+  text-align: center;
+  appearance: none;
+  cursor: pointer;
 }
