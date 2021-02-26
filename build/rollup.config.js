@@ -45,8 +45,10 @@ const rollupConfig = [{
 }, {
   input: path.resolve(__dirname, '../js/docs.js'),
   output: {
-    file: path.resolve(__dirname, '../docs/assets/js/docs.js')
-  }
+    file: path.resolve(__dirname, '../docs/assets/js/docs.js'),
+    format: 'umd',
+  },
+  plugins
 }]
 
 module.exports = rollupConfig
