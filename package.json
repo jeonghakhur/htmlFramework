@@ -7,7 +7,7 @@
     "start": "npm-run-all --parallel watch",
     "live-server": "live-server --port=5600",
     "css": "npm-run-all --parallel css-lint css-compile css-prefix css-minify",
-    "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist/css/",
+    "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/index.scss -o dist/css/ && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/docs.scss -o docs/assets/css/",
     "css-lint": "stylelint \"scss/**/*.scss\" --cache --cache-location .cache/.stylelintcache",
     "css-minify": "cleancss -O1 --format breakWith=lf --with-rebase --input-source-map --source-map-inline-sources --output dist/css/index.min.css dist/css/index.css",
     "css-prefix": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\"",

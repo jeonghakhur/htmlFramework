@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const prism = () => {
   [].forEach.call(document.querySelectorAll('pre code'), block => {
-    // const html = Prism.highlight(block.innerHTML, Prism.languages.html, 'html')
+  // const html = Prism.highlight(block.innerHTML, Prism.languages.html, 'html')
     let html = block.innerHTML
     const myArray = html.match(/^\s+/)
     const partten = new RegExp(`^${myArray[0].slice(1)}`, 'mg')
