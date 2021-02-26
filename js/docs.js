@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const prism = () => {
-  document.querySelectorAll('pre code').forEach(block => {
-  // const html = Prism.highlight(block.innerHTML, Prism.languages.html, 'html')
+  [].forEach.call(document.querySelectorAll('pre code'), block => {
+    // const html = Prism.highlight(block.innerHTML, Prism.languages.html, 'html')
     let html = block.innerHTML
     const myArray = html.match(/^\s+/)
     const partten = new RegExp(`^${myArray[0].slice(1)}`, 'mg')
@@ -18,13 +18,12 @@ const clipBoard = () => {
   // 코드 하이라이터 클립보드 기능 추가.
   const btnHtml =
     '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
-  document
-    .querySelectorAll('figure.highlight, div.highlight')
-    .forEach(element => {
-      element.insertAdjacentHTML('beforebegin', btnHtml)
-    })
 
-  document.querySelectorAll('.btn-clipboard').forEach(btn => {
+  ;[].forEach.call(document.querySelectorAll('figure.highlight, div.highlight'), element => {
+    element.insertAdjacentHTML('beforebegin', btnHtml)
+  })
+
+  ;[].forEach.call(document.querySelectorAll('.btn-clipboard'), btn => {
     const tooltipBtn = new WBM.Tooltip(btn)
 
     btn.addEventListener('mouseleave', () => {
@@ -104,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
   hashChange()
 
   // Pre 코드 치환 및 공백 처리
-  document.querySelectorAll('pre code').forEach(block => {
+  ;[].forEach.call(document.querySelectorAll('pre code'), block => {
     let html = block.innerHTML
     const myArray = html.match(/^\s+/)
     const partten = new RegExp(`^${myArray[0].slice(1)}`, 'mg')
@@ -115,9 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     block.innerHTML = html
   })
 
-  const toggleGroup = Array.from(
-    document.querySelectorAll('[data-toggle="collapse"]')
-  )
+  const toggleGroup = [].slice.call(document.querySelectorAll('[data-toggle="collapse"]'))
   const collapseFunc = () => {
     const showMenu = target => {
       target.dataset.expanded = 'true'

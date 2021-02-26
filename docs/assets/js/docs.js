@@ -5,7 +5,7 @@
 
   /* eslint-disable no-undef */
   var prism = function prism() {
-    document.querySelectorAll('pre code').forEach(function (block) {
+    [].forEach.call(document.querySelectorAll('pre code'), function (block) {
       // const html = Prism.highlight(block.innerHTML, Prism.languages.html, 'html')
       var html = block.innerHTML;
       var myArray = html.match(/^\s+/);
@@ -21,10 +21,10 @@
   var clipBoard = function clipBoard() {
     // 코드 하이라이터 클립보드 기능 추가.
     var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>';
-    document.querySelectorAll('figure.highlight, div.highlight').forEach(function (element) {
+    [].forEach.call(document.querySelectorAll('figure.highlight, div.highlight'), function (element) {
       element.insertAdjacentHTML('beforebegin', btnHtml);
     });
-    document.querySelectorAll('.btn-clipboard').forEach(function (btn) {
+    [].forEach.call(document.querySelectorAll('.btn-clipboard'), function (btn) {
       var tooltipBtn = new WBM.Tooltip(btn);
       btn.addEventListener('mouseleave', function () {
         tooltipBtn.hide();
@@ -89,9 +89,9 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     loadPage();
-    hashChange(); // Pre 코드 치환 및 공백 처리
-
-    document.querySelectorAll('pre code').forEach(function (block) {
+    hashChange() // Pre 코드 치환 및 공백 처리
+    ;
+    [].forEach.call(document.querySelectorAll('pre code'), function (block) {
       var html = block.innerHTML;
       var myArray = html.match(/^\s+/);
       var partten = new RegExp("^" + myArray[0].slice(1), 'mg');
@@ -101,7 +101,7 @@
       html = html.replace(partten, '');
       block.innerHTML = html;
     });
-    var toggleGroup = Array.from(document.querySelectorAll('[data-toggle="collapse"]'));
+    var toggleGroup = [].slice.call(document.querySelectorAll('[data-toggle="collapse"]'));
 
     var collapseFunc = function collapseFunc() {
       var showMenu = function showMenu(target) {
