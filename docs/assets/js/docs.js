@@ -45,6 +45,8 @@
     });
   };
 
+  window.loadCall = null;
+
   var getPage = function getPage(target) {
     var body = document.querySelector('#content');
 
@@ -60,6 +62,10 @@
       prism();
       clipBoard();
       WBM.initialize();
+
+      loadCall = function loadCall(fn) {
+        fn();
+      };
     });
   };
 

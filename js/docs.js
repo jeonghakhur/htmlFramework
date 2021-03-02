@@ -50,6 +50,8 @@ const clipBoard = () => {
   })
 }
 
+window.loadCall = null
+
 const getPage = target => {
   const body = document.querySelector('#content')
 
@@ -65,6 +67,10 @@ const getPage = target => {
     prism()
     clipBoard()
     WBM.initialize()
+
+    loadCall = fn => {
+      fn()
+    }
   })
 }
 

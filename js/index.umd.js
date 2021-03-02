@@ -16,7 +16,7 @@ const initialize = () => {
   console.log('initialzie')
   window.history.scrollRestoration = "manual"
   // sample
-  SelectorEngine.find('[data-toggle="tooltip"]').forEach(el => {
+  SelectorEngine.find('[data-toggle="sample"]').forEach(el => {
     console.log(el)
     if (!Sample.getInstance(el)) {
       return new Sample(el)

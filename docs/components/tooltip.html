@@ -325,14 +325,9 @@
     </tr>
   </thead>
 </table>
-<script id="appendScript">
-  // var tooltipTriggerList = [].slice.call(document.querySelectorAll('.bd-example [data-toggle="tooltip"]'))
-  // var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-  // return new WBM.Tooltip(tooltipTriggerEl, {
-  // // boundary: 'window'
-  // })
-  // })
-  $(function() {
-    $('.bd-example [data-toggle="tooltip"]').tooltip()
-  })
+<script>
+  var tooltipList = [];
+  document.querySelectorAll('.bd-example [data-toggle="tooltip"]').forEach(function(el) {
+    console.log(WBM.Tooltip.getInstance(el))
+  });
 </script>
