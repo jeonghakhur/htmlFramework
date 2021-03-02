@@ -14,6 +14,7 @@ import Sample from './src/sample'
 
 const initialize = () => {
   console.log('initialzie')
+  window.history.scrollRestoration = "manual"
   // sample
   SelectorEngine.find('[data-toggle="tooltip"]').forEach(el => {
     console.log(el)
