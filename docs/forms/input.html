@@ -82,6 +82,13 @@
 </div>
 
 <script>
+  const inputGroup = [].slice.call(document.querySelectorAll('.form-input'))
+  inputGroup.forEach(el => {
+    const form = new WBM.Form(el)
+    // form.init()
+  })
+</script>
+<!-- <script>
   const inputGroup = [].slice.call(document.querySelectorAll('.form .form-input'));
   inputGroup.forEach(function(el) {
     el.addEventListener('focus', function(e) {
@@ -99,4 +106,4 @@
       t_field.classList.remove('has-focus');
     });
   })
-</script>
+</script> -->

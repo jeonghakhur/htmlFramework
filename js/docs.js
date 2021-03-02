@@ -64,6 +64,7 @@ const getPage = target => {
     // body.style.height = `${body.getBoundingClientRect().height}px`
     prism()
     clipBoard()
+    WBM.initialize()
   })
 }
 

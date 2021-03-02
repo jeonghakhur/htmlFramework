@@ -9,6 +9,7 @@ import {
   typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
+import SelectorEngine from './dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -65,7 +66,7 @@ class Sample {
   }
 
   init() {
-    console.log(this, 'inint')
+    console.log(this, 'sample inint')
   }
 
   // Private
@@ -127,3 +128,10 @@ if ($) {
 }
 
 export default Sample
+
+SelectorEngine.find('[data-toggle="tooltip"]').forEach(el => {
+  console.log(el)
+  if (!Sample.getInstance(el)) {
+    return new Sample(el)
+  }
+})
