@@ -1,3 +1,4 @@
+import SelectorEngine from './src/dom/selector-engine'
 // import Alert from './src/alert'
 // import Button from './src/button'
 // import Carousel from './src/carousel'
@@ -11,6 +12,17 @@ import Modal from './src/modal'
 import Tooltip from './src/tooltip'
 import Sample from './src/sample'
 
+const initialize = () => {
+  console.log('initialzie')
+  // sample
+  SelectorEngine.find('body').forEach(el => {
+    console.log(el)
+    if (!Sample.getInstance(el)) {
+      return new Sample(el)
+    }
+  })
+}
+
 export default {
   // Alert,
   // Button,
@@ -23,5 +35,6 @@ export default {
   // Tab,
   // Toast,
   Tooltip,
-  Sample
+  Sample,
+  initialize
 }
