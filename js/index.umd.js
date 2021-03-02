@@ -15,7 +15,7 @@ import Sample from './src/sample'
 const initialize = () => {
   console.log('initialzie')
   // sample
-  SelectorEngine.find('body').forEach(el => {
+  SelectorEngine.find('[data-toggle="tooltip"]').forEach(el => {
     console.log(el)
     if (!Sample.getInstance(el)) {
       return new Sample(el)
