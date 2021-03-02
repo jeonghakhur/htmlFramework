@@ -59,7 +59,6 @@
 
       prism();
       clipBoard();
-      WBM.initialize()
     });
   };
 
