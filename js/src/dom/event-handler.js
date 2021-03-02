@@ -170,7 +170,6 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
 
   const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn)
   const events = getEvent(element)
-  console.log('events', events)
   const handlers = events[typeEvent] || (events[typeEvent] = {})
   const previousFn = findHandler(handlers, originalHandler, delegation ? handler : null)
 

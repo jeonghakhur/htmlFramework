@@ -10,6 +10,7 @@ import {
 } from './util/index'
 import Data from './dom/data'
 import SelectorEngine from './dom/selector-engine'
+import EventHandler from './dom/event-handler'
 
 /**
  * ------------------------------------------------------------------------
@@ -19,6 +20,13 @@ import SelectorEngine from './dom/selector-engine'
 const NAME = 'form'
 const VERSION = '4.3.1'
 const DATA_KEY = 'wbm.form'
+const EVENT_KEY = `.${DATA_KEY}`
+
+const Event = {
+  FOCUSIN: `focusin${EVENT_KEY}`,
+  FOCUSOUT: `focusout${EVENT_KEY}`,
+  CHANGE: `change${EVENT_KEY}`,
+}
 
 const Default = {
   // backdrop: true,
@@ -33,6 +41,8 @@ const DefaultType = {
   // focus: 'boolean',
   // show: 'boolean',
 }
+
+
 
 /**
  * ------------------------------------------------------------------------
@@ -49,7 +59,7 @@ class Form {
 
     Data.setData(element, DATA_KEY, this)
     this.init()
-    this.initEvent()
+    this._setListeners()
   }
 
   // Getters
@@ -68,14 +78,31 @@ class Form {
   }
 
   init() {
-    console.log('init')
-    this._field = SelectorEngine.parents(this.element, '.form-field')
+    this._field = SelectorEngine.parents(this.element, '.form-field')[0]
   }
 
-  initEvent() {
-    this.element.addEventListener('focus', () => {
-      console.log(this._field)
-    })
+  _setListeners(){
+    EventHandler.on(this.element,
+      Event.FOCUSIN,
+      false,
+      () => {
+        this._field.classList.add('has-focus')
+      }
+    )
+    EventHandler.on(this.element,
+      Event.FOCUSOUT,
+      false,
+      () => {
+        this._field.classList.remove('has-focus')
+      }
+    )
+    EventHandler.on(this.element,
+      Event.CHANGE,
+      false,
+      e => {
+        if(e.target.value) this._field.classList.add('has-value')
+      }
+    )
   }
 
   // Private

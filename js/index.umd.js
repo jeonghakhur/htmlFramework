@@ -11,6 +11,7 @@ import Modal from './src/modal'
 // import Toast from './src/toast'
 import Tooltip from './src/tooltip'
 import Sample from './src/sample'
+import Form from './src/form'
 
 const initialize = () => {
   console.log('initialzie')
@@ -19,6 +20,11 @@ const initialize = () => {
     console.log(el)
     if (!Sample.getInstance(el)) {
       return new Sample(el)
+    }
+  })
+  SelectorEngine.find('.form .form-input').forEach(el => {
+    if (!Form.getInstance(el)) {
+      return new Form(el)
     }
   })
 }
@@ -36,5 +42,6 @@ export default {
   // Toast,
   Tooltip,
   Sample,
+  Form,
   initialize
 }
