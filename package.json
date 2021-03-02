@@ -50,23 +50,5 @@
   },
   "dependencies": {
     "axios": "^0.21.1"
-  },
-  "jspm": {
-    "registry": "npm",
-    "main": "js/bootstrap",
-    "directories": {
-      "lib": "dist"
-    },
-    "shim": {
-      "js/bootstrap": {
-        "deps": [
-          "popper.js"
-        ]
-      }
-    },
-    "dependencies": {},
-    "peerDependencies": {
-      "popper.js": "^1.16.0"
-    }
   }
 }
