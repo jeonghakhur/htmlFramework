@@ -9,15 +9,30 @@
 <div class="bd-example">
   <input type="text" class="form-input" title="텍스트 입력" placeholder="이름 입력">
 </div>
+<div class="highlight">
+  <pre class="language-html"><code>
+    <input type="text" class="form-input" title="텍스트 입력" placeholder="이름 입력">
+</code></pre>
+</div>
 
 <h3>Disabled</h3>
 <div class="bd-example">
   <input type="text" class="form-input" title="텍스트 입력" value="내용" disabled>
 </div>
+<div class="highlight">
+  <pre class="language-html"><code>
+    <input type="text" class="form-input" title="텍스트 입력" placeholder="이름 입력" disabled>
+</code></pre>
+</div>
 
 <h3>Readonly</h3>
 <div class="bd-example">
   <input type="text" class="form-input" title="텍스트 입력" value="내용" readonly>
+</div>
+<div class="highlight">
+  <pre class="language-html"><code>
+    <input type="text" class="form-input" title="텍스트 입력" placeholder="이름 입력" readonly>
+</code></pre>
 </div>
 
 <h2>검색 Input</h2>
@@ -25,7 +40,7 @@
   <div class="form">
     <div class="form-row">
       <div class="form-field form-field-search">
-        <input type="search" class="form-input" id="formTextLabelA" title="검색" placeholder="검색">
+        <input type="search" class="form-input" title="검색" placeholder="검색">
         <button type="reset" class="reset-button">
           <span class="sr-only">검색 초기화</span>
         </button>
@@ -36,19 +51,52 @@
     </div>
   </div>
 </div>
+<div class="highlight">
+  <pre class="language-html"><code>
+    <div class="form">
+      <div class="form-row">
+        <div class="form-field form-field-search">
+          <input type="search" class="form-input" title="검색" placeholder="검색">
+          <button type="reset" class="reset-button">
+            <span class="sr-only">검색 초기화</span>
+          </button>
+          <button type="button" class="search-button">
+            <span class="sr-only">검색</span>
+          </button>
+        </div>
+      </div>
+    </div>
+</code></pre>
+</div>
 
 <h2>파일 Input</h2>
 <div class="bd-example">
   <div class="form">
-    <div class="form-field form-field-upload">
-      <label for="formFile" class="upload-label">파일 선택</label>
-      <input class="form-input" type="file" id="formFile">
-      <input type="text" class="upload-file" title="첨부된 파일" readonly>
+    <div class="form-row">
+      <div class="form-field form-field-upload">
+        <label for="formFile" class="upload-label">파일 선택</label>
+        <input class="form-input" type="file" id="formFile">
+        <input type="text" class="upload-file" title="첨부된 파일" readonly>
+      </div>
     </div>
   </div>
 </div>
+<div class="highlight">
+  <pre class="language-html"><code>
+    <div class="form">
+      <div class="form-row">
+        <div class="form-field form-field-upload">
+          <label for="formFile" class="upload-label">파일 선택</label>
+          <input class="form-input" type="file" id="formFile">
+          <input type="text" class="upload-file" title="첨부된 파일" readonly>
+        </div>
+      </div>
+    </div>
+</code></pre>
+</div>
 
 <h2>Input Layout</h2>
+<p>.form-row 안에 .form-field에 클래스를 지정하지 않으면 기본적으로 flex: 1로 균등한 너비를 가지며,<br /> 너비를 늘리거나 줄이기를 원하는 폼 필드 요소(<b>.form-field</b>)에 클래스 <b>col-[2~4]</b>를 추가하여 너비를 배분합니다.</p>
 <div class="bd-example">
   <div class="form">
     <div class="form-row">
@@ -80,30 +128,45 @@
     </div>
   </div>
 </div>
-
-<script>
-  const inputGroup = [].slice.call(document.querySelectorAll('.form-input'))
-  inputGroup.forEach(el => {
-    const form = new WBM.Form(el)
-    // form.init()
-  })
-</script>
-<!-- <script>
-  const inputGroup = [].slice.call(document.querySelectorAll('.form .form-input'));
-  inputGroup.forEach(function(el) {
-    el.addEventListener('focus', function(e) {
-      const t_field = e.target.parentElement;
-      t_field.classList.add('has-focus');
-    });
-    el.addEventListener('change', function(e) {
-      const t_field = e.target.parentElement;
-      if (e.target.value) {
-        t_field.classList.add('has-value');
-      }
-    });
-    el.addEventListener('blur', function(e) {
-      const t_field = e.target.parentElement;
-      t_field.classList.remove('has-focus');
-    });
-  })
-</script> -->
+<div class="highlight">
+  <pre class="language-html"><code>
+    <div class="form">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="inputLabelA" class="form-label">
+            이름
+            <span class="sr-only">필수입력</span>
+            <span class="require" aria-hidden="true">*</span>
+          </label>
+          <input type="text" class="form-input" id="inputLabelA">
+        </div>
+        <div class="form-field">
+          <label for="inputLabelB" class="form-label">
+            나이
+            <span class="sr-only">필수입력</span>
+            <span class="require" aria-hidden="true">*</span>
+          </label>
+          <input type="text" class="form-input" id="inputLabelB">
+        </div>
+        <div class="form-field">
+          <label for="inputLabelC" class="form-label">
+            성별
+            <span class="sr-only">필수입력</span>
+            <span class="require" aria-hidden="true">*</span>
+          </label>
+          <input type="text" class="form-input" id="inputLabelC">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field col-3">
+          <label for="inputLabelD" class="form-label">전화번호</label>
+          <input type="text" class="form-input" id="inputLabelD" placeholder="01012345678">
+        </div>
+        <div class="form-field">
+          <label for="inputLabelE" class="form-label">주소</label>
+          <input type="text" class="form-input" id="inputLabelE">
+        </div>
+      </div>
+    </div>
+</code></pre>
+</div>
