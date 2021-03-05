@@ -54,7 +54,7 @@ class Form {
   constructor(element, config) {
     // Protected
     this.element = element
-    this._field = null
+    this._field = SelectorEngine.parents(this.element, '.form-field')[0]
     this.config = this._getConfig(config)
 
     Data.setData(element, DATA_KEY, this)
@@ -75,10 +75,11 @@ class Form {
   // Public
   dispose() {
     console.log('dispose')
+    EventHandler.off(this.element, EVENT_KEY)
+    Data.removeData(this.element, DATA_KEY)
   }
 
   init() {
-    this._field = SelectorEngine.parents(this.element, '.form-field')[0]
   }
 
   _setListeners(){
@@ -162,5 +163,6 @@ if ($) {
     return Form.jQueryInterface
   }
 }
+
 
 export default Form
