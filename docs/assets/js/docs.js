@@ -57,23 +57,27 @@
     $.ajax({
       url: target + ".html"
     }).done(function (data) {
-      $(body).html(data); // body.style.height = `${body.getBoundingClientRect().height}px`
-
+      $(body).html(data);
       prism();
       clipBoard();
       WBM.initialize();
+      var scrollTop = localStorage.getItem('scrollY');
 
-      loadCall = function loadCall(fn) {
-        fn();
-      };
+      if (scrollTop) {
+        window.scrollTo(0, scrollTop);
+      }
+
+      if (typeof loadCall === 'function') {
+        loadCall();
+      }
     });
   };
 
   var navi = function navi() {
     var naviEl = document.querySelector('.ly-nav');
     naviEl.addEventListener('click', function (e) {
-      if (e.target.nodeName === 'A' && e.target.dataset.toggle) return;
       e.preventDefault();
+      if (e.target.nodeName === 'A' && e.target.dataset.toggle) return;
       var el = e.target;
       var target = el.getAttribute('href');
       window.location.hash = target;
@@ -88,8 +92,7 @@
   };
 
   var hashChange = function hashChange() {
-    window.addEventListener('hashchange', function (e) {
-      console.log(e);
+    window.addEventListener('hashchange', function () {
       getPage(window.location.hash);
     }, false);
   };

@@ -81,6 +81,7 @@ $theme-colors: (
 // 선택적 기능을 활성화 또는 비활성화하여 전역 스타일을 빠르게 수정합니다.
 $enable-negative-margins: true !default;
 $enable-important-utilities: true !default;
+$enable-rounded: true;
 
 // Spacing
 //

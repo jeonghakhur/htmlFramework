@@ -23,9 +23,16 @@ const initialize = () => {
       return new Sample(el)
     }
   })
+
   SelectorEngine.find('.form .form-input').forEach(el => {
     if (!Form.getInstance(el)) {
       return new Form(el)
+    }
+  })
+
+  SelectorEngine.find('.bd-example [data-toggle="tooltip"]').forEach(el => {
+    if (!Tooltip.getInstance(el)) {
+      return new Tooltip(el)
     }
   })
 }

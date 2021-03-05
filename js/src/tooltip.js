@@ -34,7 +34,7 @@ import SelectorEngine from './dom/selector-engine'
 
 const NAME = 'tooltip'
 const VERSION = '4.3.1'
-const DATA_KEY = 'bs.tooltip'
+const DATA_KEY = 'wbm.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'tooltip'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')

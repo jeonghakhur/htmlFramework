@@ -63,13 +63,19 @@ const getPage = target => {
     url: `${target}.html`
   }).done(data => {
     $(body).html(data)
-    // body.style.height = `${body.getBoundingClientRect().height}px`
+
     prism()
     clipBoard()
     WBM.initialize()
 
-    loadCall = fn => {
-      fn()
+    const scrollTop = localStorage.getItem('scrollY')
+
+    if (scrollTop) {
+      window.scrollTo(0, scrollTop)
+    }
+
+    if (typeof loadCall === 'function') {
+      loadCall()
     }
   })
 }
@@ -78,8 +84,8 @@ const navi = () => {
   const naviEl = document.querySelector('.ly-nav')
 
   naviEl.addEventListener('click', e => {
-    if (e.target.nodeName === 'A' && e.target.dataset.toggle) return
     e.preventDefault()
+    if (e.target.nodeName === 'A' && e.target.dataset.toggle) return
 
     const el = e.target
     const target = el.getAttribute('href')
@@ -97,15 +103,13 @@ const loadPage = () => {
 }
 
 const hashChange = () => {
-  window.addEventListener('hashchange', e => {
-    console.log(e)
+  window.addEventListener('hashchange', () => {
     getPage(window.location.hash)
   }, false)
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
   loadPage()
   hashChange()
 

@@ -170,3 +170,16 @@
     </div>
 </code></pre>
 </div>
+<script>
+  loadCall(function() {
+    console.log('load');
+    [].forEach.call(document.querySelectorAll('.form-input'), function(el) {
+      console.log(WBM.Form.getInstance(el))
+    })
+  })
+  // setTimeout(function() {
+  //   [].forEach.call(document.querySelectorAll('.form-input'), function(el) {
+  //     console.log(WBM.Form.getInstance(el))
+  //   })
+  // }, 1000)
+</script>

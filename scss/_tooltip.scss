@@ -1,0 +1,114 @@
+$self: '.tooltip';
+$tooltip-bg: $black;
+$tooltip-arrow-color: $black;
+$tooltip-arrow-width: 0.8rem;
+$tooltip-arrow-height: 0.4rem;
+
+// Base class
+#{$self} {
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  @include font-size(0.875);
+  // 매우 긴 단어를 분리하여 툴팁의 경계를 넘치지 않도록합니다.
+  word-wrap: break-word;
+  opacity: 0;
+
+  &.show { opacity: 0.9; }
+
+  &-top,
+  &-bottom {
+    padding: $tooltip-arrow-height 0;
+  }
+
+  &-right,
+  &-left {
+    padding: 0 $tooltip-arrow-height;
+  }
+
+  // &-auto {
+  //   &[x-placement^="top"] {
+  //     @extend &-top;
+  //   }
+  //   &[x-placement^="right"] {
+  //     @extend &-right;
+  //   }
+  //   &[x-placement^="bottom"] {
+  //     @extend &-bottom;
+  //   }
+  //   &[x-placement^="left"] {
+  //     @extend &-left;
+  //   }
+  // }
+}
+
+
+
+// Wrapper for the tooltip content
+#{$self}-inner {
+  max-width: 200px;
+  padding: map-get($spacers, 1) map-get($spacers, 2);
+  color: $white;
+  text-align: center;
+  background-color: $tooltip-bg;
+  border-radius: 0.25rem;
+  // @include border-radius($tooltip-border-radius);
+}
+
+#{$self}-arrow {
+  position: absolute;
+  display: block;
+  width: 0.8rem;
+  height: 0.4rem;
+
+  &::before {
+    position: absolute;
+    content: "";
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  #{$self}-top & {
+    bottom: 0;
+
+    &::before {
+      top: 0;
+      border-width: $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
+      border-top-color: $tooltip-arrow-color;
+    }
+  }
+
+  #{$self}-right & {
+    left: 0;
+    width: $tooltip-arrow-height;
+    height: $tooltip-arrow-width;
+
+    &::before {
+      right: 0;
+      border-width: ($tooltip-arrow-width / 2) $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
+      border-right-color: $tooltip-arrow-color;
+    }
+  }
+
+  #{$self}-bottom & {
+    top: 0;
+
+    &::before {
+      bottom: 0;
+      border-width: 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height;
+      border-bottom-color: $tooltip-arrow-color;
+    }
+  }
+
+  #{$self}-left & {
+    right: 0;
+    width: $tooltip-arrow-height;
+    height: $tooltip-arrow-width;
+
+    &::before {
+      left: 0;
+      border-width: ($tooltip-arrow-width / 2) 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height;
+      border-left-color: $tooltip-arrow-color;
+    }
+  }
+}

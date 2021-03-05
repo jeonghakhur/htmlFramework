@@ -1,37 +1,37 @@
-body, html {
+.doc {
   overflow-x: hidden;
+  /* border */
+  /* clearfix */
 }
 
-body {
+.doc body {
+  overflow-x: hidden;
   width: 100%;
+  font-size: 14px !important;
 }
 
-html {
-  font-size: 14px;
-}
-
-ul,
-ul li {
+.doc ul,
+.doc ul li {
   margin: 0;
   padding: 0;
 }
 
-ul li {
+.doc ul li {
   list-style-type: none;
 }
 
-a {
+.doc a {
   text-decoration: none;
   color: #333;
 }
 
-.ly-wrapper {
+.doc .ly-wrapper {
   margin: 0 auto;
   max-width: 1400px;
   min-width: 1200px;
 }
 
-.ly-header {
+.doc .ly-header {
   position: relative;
   height: 35px;
   padding: 0 20px;
@@ -39,7 +39,7 @@ a {
   font-size: 1rem;
 }
 
-.ly-header:before {
+.doc .ly-header:before {
   content: '';
   display: block;
   position: absolute;
@@ -51,18 +51,26 @@ a {
   z-index: -1;
 }
 
-.ly-header::before {
+.doc .ly-header::before {
   left: -50%;
 }
 
-.ly-header a {
+.doc .ly-header a {
   display: inline-block;
   line-height: 35px;
   margin: 0 1em;
   color: white;
 }
 
-.ly-nav {
+.doc .ly-container {
+  display: flex;
+}
+
+.doc .ly-container > * {
+  padding-top: 30px;
+}
+
+.doc .ly-nav {
   flex-shrink: 0;
   position: sticky;
   top: 0;
@@ -73,22 +81,22 @@ a {
   overflow-y: auto;
 }
 
-.ly-nav .collapse:not(.show) {
-  display: none;
-}
-
-.ly-nav .collapsing {
+.doc .ly-nav .collapsing {
   overflow: hidden;
   height: 0;
   transition: height .3s ease;
 }
 
-.ly-nav [data-expanded] {
+.doc .ly-nav .collapse:not(.show) {
+  display: none;
+}
+
+.doc .ly-nav [data-expanded] {
   position: relative;
   padding-left: 25px;
 }
 
-.ly-nav [data-expanded]:before {
+.doc .ly-nav [data-expanded]::before {
   content: '';
   display: block;
   position: absolute;
@@ -103,11 +111,11 @@ a {
   transition: transform .3s;
 }
 
-.ly-nav [data-expanded="true"]:before {
+.doc .ly-nav [data-expanded="true"]:before {
   transform: rotate(135deg);
 }
 
-.ly-nav li a {
+.doc .ly-nav li a {
   display: block;
   padding: 5px;
   font-size: 18px;
@@ -115,30 +123,21 @@ a {
   color: #666;
 }
 
-.ly-nav li ul a {
+.doc .ly-nav li ul a {
   margin-left: 20px;
   font-weight: normal;
   font-size: 1rem;
 }
 
-.ly-container {
-  display: flex;
-}
-
-.ly-container > * {
-  padding-top: 30px;
-}
-
-.ly-content {
+.doc .ly-content {
   width: calc(100% - 200px);
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 50px;
   min-height: 100vh;
-  font-size: 1rem;
 }
 
-.ly-sidebar {
+.doc .ly-sidebar {
   position: sticky;
   top: 0;
   width: 200px;
@@ -146,36 +145,38 @@ a {
   float: right;
 }
 
-.ly-nav .ly-sidebar li a {
+.doc .ly-sidebar li a {
   color: #777 !important;
 }
 
-.page-title-wrap h1 {
+.doc .page-title-wrap h1 {
   font-size: 40px;
   color: #000;
 }
 
-.ly-content h2 {
+.doc .page-title-wrap .desc {
+  font-size: 20px;
+}
+
+.doc h2 {
   margin-top: 50px;
   font-size: 28px;
   color: #333;
 }
 
-.ly-content h3 {
-  margin-top: 40px;
-  font-size: 22px;
-  color: #555;
+.doc h3 {
+  font-size: 1.8rem;
 }
 
-.page-title-wrap .desc {
-  font-size: 20px;
+.doc h4 {
+  font-size: 1.5rem;
 }
 
-.bd-clipboard {
+.doc .bd-clipboard {
   position: relative;
 }
 
-.bd-clipboard .btn-clipboard {
+.doc .bd-clipboard .btn-clipboard {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -184,33 +185,33 @@ a {
   background-color: #f5f5f5;
 }
 
-.highlight {
+.doc .highlight {
   margin: 0;
+  margin-bottom: 1rem;
 }
 
-.highlight .language-html {
+.doc .highlight .language-html {
   margin: 0;
   border-radius: 0;
   font-size: 1rem;
 }
 
-.bd-example {
+.doc .bd-example {
   padding: 30px;
   border: 1px solid #ccc;
   border-radius: 3px 3px 0 0;
 }
 
-.bd-exampleh2, .bd-exampleh3 {
+.doc .bd-exampleh2, .doc .bd-exampleh3 {
   margin-top: 20px;
 }
 
-.ex-row,
-.bd-example {
+.doc .ex-row,
+.doc .bd-example {
   margin-top: 30px;
 }
 
-/* border */
-.border-utils span {
+.doc .border-utils span {
   display: inline-block;
   width: 80px;
   height: 80px;
@@ -218,51 +219,51 @@ a {
   background-color: #f9f9f9;
 }
 
-.border-utils.border span {
+.doc .border-utils.border span {
   border: 1px solid #dee2e6;
 }
 
-.border-utils.border.last {
+.doc .border-utils.border.last {
   background-color: #ccc;
 }
 
-.border-utils.border.last span {
+.doc .border-utils.border.last span {
   background-color: inherit;
 }
 
-/* clearfix */
-.clearfix-util .clearfix {
+.doc .clearfix-util .clearfix {
   width: 100%;
 }
 
-.clearfix-util .clearfix div {
+.doc .clearfix-util .clearfix div {
   background-color: #eee;
   width: 30%;
   padding: .5rem;
 }
 
-.clearfix-util .clearfix div:last-child {
+.doc .clearfix-util .clearfix div:last-child {
   text-align: right;
 }
 
-.table {
+.doc .table {
   width: 100%;
   /* border-spacing: 0; */
   /* border-collapse: separate; */
+  margin-bottom: 1.5rem;
 }
 
-.table th {
+.doc .table th {
   padding: 0.5rem;
   border-top: 1px solid var(--color-gray-dark);
   border-bottom: 1px solid var(--color-gray-dark);
 }
 
-.table td {
+.doc .table td {
   padding: 0.5rem;
   border-bottom: 1px solid var(--color-gray);
 }
 
-.doc-callout {
+.doc .callout {
   padding: 1.25rem;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -271,23 +272,23 @@ a {
   border-radius: .25rem;
 }
 
-.doc-callout-info {
+.doc .callout-info {
   border-left-color: #5bc0de;
 }
 
-.doc-callout-info h4 {
+.doc .callout-info h4 {
   color: #5bc0de;
 }
 
-.doc-callout-danger {
+.doc .callout-danger {
   border-left-color: #d9534f;
 }
 
-.doc-callout-danger h4 {
+.doc .callout-danger h4 {
   color: #d9534f;
 }
 
-.doc-callout-warning {
+.doc .callout-warning {
   border-left-color: #f0ad4e;
 }
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="doc">
 
 <head>
   <meta charset="utf-8">
@@ -11,7 +11,7 @@
   <title>우리은행 마이데이터 가이드 페이지</title>
   <link href="../dist/css/index.css" rel="stylesheet">
   <link href="assets/css/vendor/prism.css" rel="stylesheet">
-  <link href="assets/css/docs.css" rel="stylesheet">
+  <link href="../dist/css/docs.css" rel="stylesheet">
 </head>
 
 <body>
@@ -108,6 +108,14 @@
   <script src="../dist/js/index.js"></script>
   <script src="assets/js/docs.js"></script>
   <script data-manual src="assets/js/vendor/prism.js"></script>
+  <script src="assets/js/vendor/lodash.min.js"></script>
+  <script>
+    // history.pushState
+    window.history.scrollRestoration = 'manual';
+    window.addEventListener('scroll', function(e) {
+      localStorage.setItem('scrollY', scrollY)
+    })
+  </script>
 </body>
 
 </html>
