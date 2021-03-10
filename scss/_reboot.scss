@@ -14,9 +14,9 @@ body {
   @include font-size(22px);
   font-weight: $font-weight-normal;
   line-height: $line-height-base;
-  color: $gray-900;
+  color: $body-color;
   text-align: $body-text-align;
-  background-color: $body-color;
+  background-color: $white;
   -webkit-text-size-adjust: 100%; // 2
   -webkit-tap-highlight-color: rgba($black, 0); // 3
 }
@@ -159,7 +159,7 @@ strong {
 // Add the correct font size in all browsers
 
 small {
-  font-size: $font-size-sm;
+  @include font-size($font-size-sm);
 }
 
 
@@ -179,13 +179,18 @@ mark {
 sub,
 sup {
   position: relative;
-  font-size: 0.75em;
+  @include font-size(0.75em);
   line-height: 0;
   vertical-align: baseline;
 }
 
-sub { bottom: -.25em; }
-sup { top: -.5em; }
+sub {
+  bottom: -.25em;
+}
+
+sup {
+  top: -.5em;
+}
 
 // Links
 
@@ -206,11 +211,11 @@ code,
 kbd,
 samp {
   font-family: var(--font-monospace);
-  font-size: 1em;
+  @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
 }
 
 code {
-  font-size: $font-size-sm;
+  @include font-size($font-size-sm);
   color: $pink;
   word-wrap: break-word;
 }
@@ -222,19 +227,268 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
-  font-size: $font-size-sm;
+  @include font-size($font-size-sm);
   -ms-overflow-style: scrollbar; // 1
 
   code {
     @include font-size(inherit);
     color: inherit;
     word-break: normal;
+
+    // 끊어진 밑줄 등을 방지하기 위해 앵커 내부에서 스타일을 간소화
+    a > & {
+      color: inherit;
+    }
   }
 }
 
-.button {
-  margin: 0;
+kbd {
+  padding: 0.2rem 0.4rem;
+  @include font-size($font-size-sm);
+  color: $white;
+  background-color: $gray-900;
+  @include border-radius(0.2rem);
+
+  kbd {
+    padding: 0;
+    @include font-size(16px);
+    font-weight: $font-weight-bold;
+  }
+}
+
+// Figures
+//
+// 일관된 마진 전략을 적용하십시오 (유형 스타일과 일치)
+
+figure {
+  margin: 0 0 1rem;
+}
+
+// Images and content
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+// Tables
+//
+// 이중 테두리 방지
+
+table {
+  caption-side: bottom;
+  border-collapse: collapse;
+}
+
+caption {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: $gray-600;
+  text-align: left;
+}
+
+// 1. `text-align`을 상속하여 기본`<td>`정렬과 일치합니다.
+// 2. Safari 정렬 수정
+
+th {
+  text-align: inherit; // 1
+  text-align: -webkit-match-parent; // 2
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+// Forms
+//
+// 1. 레이블에서 간격에 '여백'을 사용하도록 허용합니다.
+
+label {
+  display: inline-block; // 1
+}
+
+
+// macOS Chrome이 추가하는 기본`border-radius`를 제거합니다.
+// See https://github.com/twbs/bootstrap/issues/24093
+
+button {
+  // stylelint-disable-next-line property-disallowed-list
+  border-radius: 0;
+}
+
+// 투명한 '버튼'배경으로 인해 기본 '버튼'포커스 스타일이 손실되는 Firefox 버그 해결.
+// Credit https://github.com/suitcss/base/
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+// 1. Firefox 및 Safari에서 여백 제거
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0; // 1
+  font-family: inherit;
+  @include font-size(inherit);
+  line-height: inherit;
+}
+
+// Edge에서 오버플로 표시
+
+button,
+input {
+  overflow: visible;
+}
+
+
+// Firefox에서 텍스트 변환의 ​​상속 제거
+
+button,
+select {
+  text-transform: none;
+}
+
+// Safari에서 자동 줄 바꿈의 상속을 제거하십시오.
+// See https://github.com/twbs/bootstrap/issues/24990
+
+select {
+  word-wrap: normal;
+}
+
+// 데이터 목록으로 빌드 된 입력에서 Chrome의 드롭 다운 화살표를 제거합니다.
+// See https://stackoverflow.com/a/54997118
+
+[list]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; // 2
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+
+// Firefox에서 내부 테두리와 패딩을 제거하되 Normalize와 같은 윤곽선을 복원하지 마십시오.
+
+::-moz-focus-inner {
   padding: 0;
+  border-style: none;
+}
+
+// 1. 텍스트 영역은 실제로 (수평) 컨테이너가 깨지지 않도록 세로로만 크기를 조정해야합니다.
+
+textarea {
+  resize: vertical; // 1
+}
+
+// 1. https://github.com/twbs/bootstrap/issues/12359
+// 2. 페이지 레이아웃에 영향을주지 않도록 필드 세트의 기본 개요 동작을 재설정합니다.
+
+fieldset {
+  min-width: 0; // 1
+  padding: 0; // 2
+  margin: 0; // 2
+  border: 0; // 2
+}
+
+
+// datetime-local, 날짜, 월, 주 또는 시간 유형으로 입력 높이 수정
+// See https://github.com/twbs/bootstrap/issues/18842
+
+::-webkit-datetime-edit-fields-wrapper,
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+  padding: 0;
+}
+
+::-webkit-inner-spin-button {
+  height: auto;
+}
+
+// 1. Safari에서 윤곽선 스타일을 수정합니다.
+// 2. https://github.com/twbs/bootstrap/issues/11586.
+
+[type="search"] {
+  outline-offset: -2px; // 1
+  -webkit-appearance: textfield; // 2
+}
+
+
+// macOS의 Chrome 및 Safari에서 내부 패딩을 제거합니다.
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+// 웹킷 브라우저에서 색상 선택기 주변의 패딩 제거
+
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+// 1. Safari에서 글꼴 속성을 '상속'으로 변경합니다.
+// 2. iOS 및 Safari에서 클릭 가능한 유형의 스타일을 지정할 수없는 문제를 수정합니다.
+
+::-webkit-file-upload-button {
+  font: inherit; // 1
+  -webkit-appearance: button; // 2
+}
+
+// 올바른 요소 표시
+
+output {
+  display: inline-block;
+}
+
+// iframe에서 테두리 제거
+
+iframe {
   border: 0;
-  background-color: transparent;
+}
+
+// Summary
+//
+// 1. 모든 브라우저에 올바른 디스플레이 추가
+
+summary {
+  display: list-item; // 1
+  cursor: pointer;
+}
+
+
+// Progress
+//
+// Chrome, Firefox 및 Opera에서 올바른 수직 정렬을 추가하십시오.
+progress {
+  vertical-align: baseline;
+}
+
+
+// Hidden attribute
+//
+// 항상`hidden` HTML 속성으로 요소를 숨 깁니다.
+
+[hidden] {
+  display: none !important;
 }

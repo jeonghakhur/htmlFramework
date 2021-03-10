@@ -7,10 +7,13 @@
 
 // Utilities
 @import "mixins/utilities";
+@import "mixins/color";
 
 // Skins
 @import "mixins/border-radius";
 @import "mixins/box-shadow";
+@import "mixins/gradients";
+
 // @import "mixins/gradients";
 @import "mixins/transition";
 

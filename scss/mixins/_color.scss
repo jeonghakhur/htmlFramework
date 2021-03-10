@@ -1,0 +1,38 @@
+
+$contrast-index: 0;
+$contrast-flag: false;
+$orign-text-color: null;
+
+@mixin color($background,  $text-color: $white) {
+  $l1: luminance($background);
+  // $l2: luminance($text-color);
+  $l2: luminance(opaque($background, $text-color));
+
+  @if ($orign-text-color == null) {
+    $orign-text-color: $text-color !global;
+  }
+  // $opaque: opaque($text-color, $background);
+
+  $contrast: if($l1 > $l2, ($l1 + .05) / ($l2 + .05), ($l2 + .05) / ($l1 + .05));
+
+  @debug $l1, $l2, $contrast;
+
+  @if ($contrast < $min-contrast-ratio) {
+    $contrast-flag: true !global;
+    $contrast-index: $contrast-index + 1 !global;
+    @if ($l2 > 0) {
+      // @include color($background, darken($text-color, .5%));
+    } @else {
+      // @include color($background, lighten($text-color, .5%));
+    }
+    // @include color($background, darken($text-color, .5%));
+  } @else {
+    @if ($contrast-flag) {
+      @debug 'color (#{$orign-text-color})가 background(#{$background})의 명도대비 4.5 : 1 이하의 색상이 지정되어 #{$contrast-index} 번의 치환을 걸쳐 #{$text-color} 색상 값으로 변환합니다.';
+    }
+    $contrast-index: 0 !global;
+    $contrast-flag: false !global;
+    $orign-text-color: null !global;
+    color: $text-color;
+  }
+}
