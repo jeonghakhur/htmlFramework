@@ -6,5 +6,6 @@
   },
   "htmlhint.options": {
     "doctype-first": false
-  }
+  },
+  "liveServer.settings.port": 5501
 }
