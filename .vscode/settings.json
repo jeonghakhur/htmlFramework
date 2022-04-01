@@ -1,11 +1,49 @@
 {
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "all",
+  "editor.formatOnSave": true,
   "editor.wordWrap": "on",
-  "beautify.ignore": ["**/*.scss"],
-  "[scss]": {
+  "editor.minimap.enabled": false,
+  "editor.wordSeparators": "`~!@%^&*()=+[{]}\\|;:'\",.<>/?",
+  "window.title": "${activeFolderMedium}${separator}${rootName}",
+  "beautify.ignore": [],
+  "[html]": {
     "editor.defaultFormatter": "HookyQR.beautify"
   },
-  "htmlhint.options": {
-    "doctype-first": false
+  // "[scss]": {
+  //   "editor.defaultFormatter": "HookyQR.beautify"
+  // },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "liveServer.settings.port": 5501
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    ".*rc": "jsonc",
+    "*.json": "jsonc"
+  },
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "~/../dist/css"
+    }
+  ],
+  "liveSassCompile.settings.autoprefix": null,
+  "liveServer.settings.port": 5501,
+  "liveServer.settings.ignoreFiles": [
+    ".vscode/**",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.ts",
+    "scss/docs.scss"
+  ],
+  "csscomb.formatOnSave": true,
+  "csscomb.preset": "./csscomb.json"
+
+  // "csscomb.ignoreFilesOnSave": []
 }

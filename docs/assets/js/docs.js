@@ -1,5 +1,5 @@
 (function (factory) {
-  typeof define === 'function' && define.amd ? define(['core-js/modules/es6.regexp.replace.js', 'core-js/modules/es6.regexp.split.js', 'core-js/modules/es6.regexp.constructor.js', 'core-js/modules/es6.regexp.match.js'], factory) :
+  typeof define === 'function' && define.amd ? define(factory) :
   factory();
 }((function () { 'use strict';
 
